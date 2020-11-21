@@ -1,0 +1,46 @@
+<Ui.FormControl variant="outlined">
+                                    <Ui.InputLabel htmlFor="outlined-adornment-password">Password</Ui.InputLabel>
+                                    <Ui.OutlinedInput
+                                        id="outlined-adornment-password"
+                                        type={user.showPassword ? 'text' : 'password'}
+                                        value={user.password}
+                                        name="password"
+                                        onChange={handleChange('password')}
+                                        endAdornment={
+                                        <Ui.InputAdornment position="end">
+                                            <Ui.IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                            >
+                                            {user.showPassword ? <Ui.Visibility /> : <Ui.VisibilityOff />}
+                                            </Ui.IconButton>
+                                        </Ui.InputAdornment>
+                                        }
+                                        labelWidth={70}
+                                    />
+                                    </Ui.FormControl>
+                                    <Ui.FormControl variant="outlined">
+                                    <Ui.InputLabel htmlFor="outlined-adornment-password">Password</Ui.InputLabel>
+                                    <Ui.OutlinedInput
+                                        id="outlined-adornment-password"
+                                        type={user.showPassword ? 'text' : 'password'}
+                                        value={user.password2}
+                                        name="password2"
+                                        onChange={handleChange('password2')}
+                                        endAdornment={
+                                        <Ui.InputAdornment position="end">
+                                            <Ui.IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                            >
+                                            {user.showPassword ? <Ui.Visibility /> : <Ui.VisibilityOff />}
+                                            </Ui.IconButton>
+                                        </Ui.InputAdornment>
+                                        }
+                                        labelWidth={70}
+                                    />
+                                    </Ui.FormControl>
