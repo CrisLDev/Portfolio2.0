@@ -31,7 +31,7 @@ const Navbar = () => {
                 <Ui.Toolbar>
                     <Ui.Container className="d-flex justify-content-center">
                         <Ui.List>
-                            <Link to="/" className="nav-link text-uppercase">
+                            <Link to="/" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
