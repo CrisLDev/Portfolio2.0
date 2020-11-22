@@ -28,27 +28,59 @@ const Home = () => {
                 <Ui.Box className="banner">
                     <Ui.Container>
                         <Ui.Grid container spacing={3} justify="space-between">
-                            <Ui.Grid item xs={12} sm={12} md={4} lg={4} xl={2}>
-                                <Ui.Grid container spacing={3} justify="center">
-                                    <Ui.Grid item xs={5} sm={2} md={12} lg={12} xl={2}>
-                                        <Ui.Box>
-                                            <Ui.Typography component="p">
-                                            <svg viewBox="0 0 16 16" className="bi bi-code-slash img-fluid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
-                                            </svg>
-                                            </Ui.Typography>
-                                        </Ui.Box>
+                            <Ui.Grid item xs={12} sm={12} md={5} lg={4} xl={2}>
+                            <Ui.Box id="withWidthFull">
+                                    <Ui.Grid container spacing={3}>
+                                        <Ui.Grid item xs={4} sm={4} md={5} lg={7} xl={2}>
+                                            <Ui.Box>
+                                                <Ui.Typography component="p">
+                                                <svg viewBox="0 0 16 16" className="bi bi-code-slash img-fluid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+                                                </svg>
+                                                </Ui.Typography>
+                                            </Ui.Box>
+                                        </Ui.Grid>
+                                        <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={2}>
+                                            <Ui.Box>
+                                                <Ui.Typography component="h1" variant="h3" className="text-uppercase font-weight-bold">
+                                                    Hola soy Cristhian,
+                                                </Ui.Typography>
+                                                <Ui.Typography component="h1" variant="h4" className="text-uppercase font-weight-bold">
+                                                    Un Web Developer.
+                                                </Ui.Typography>
+                                            </Ui.Box>
+                                        </Ui.Grid>
                                     </Ui.Grid>
-                                </Ui.Grid>
+                                </Ui.Box>
+                                <Ui.Box id="withNoWidthFull" className="mb-4" >
+                                    <Ui.Grid container spacing={3} justify="center">
+                                        <Ui.Grid item xs={4} sm={2} md={5} lg={7} xl={2}>
+                                            <Ui.Box>
+                                                <Ui.Typography component="p">
+                                                <svg viewBox="0 0 16 16" className="bi bi-code-slash img-fluid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+                                                </svg>
+                                                </Ui.Typography>
+                                            </Ui.Box>
+                                        </Ui.Grid>
+                                        <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={2} className="d-flex justify-content-center">
+                                            <Ui.Box>
+                                                <Ui.Typography component="p" variant="h6" className="text-uppercase font-weight-bold text-justify">
+                                                    Hola soy Cristhian, Un Web Developer.
+                                                </Ui.Typography>
+                                            </Ui.Box>
+                                        </Ui.Grid>
+                                    </Ui.Grid>
+                                </Ui.Box>
                             </Ui.Grid>
                             <Ui.Grid item xs={12} sm={12} md={3} lg={3} xl={2}>
                                 <Ui.Grid container spacing={3} justify="center">
-                                    <Ui.Grid item xs={5} sm={4} md={12} lg={12} xl={2}>
+                                    <Ui.Grid item xs={6} sm={6} md={12} lg={12} xl={2} className="floating">
                                         <Ui.Box p="1.2em">
-                                            <img loading="lazy" src="https://i.imgur.com/Olx0SLG.jpg" alt="Foto De Perfil" className="rounded-circle img-fluid border floating" />
+                                            <img loading="lazy" src="https://i.imgur.com/Olx0SLG.jpg" alt="Foto De Perfil" className="rounded-circle img-fluid border" />
                                         </Ui.Box>
-                                        <Ui.Box mt="2em" borderBottom="1px solid white" padding="5px">
-                                            <Ui.AssignmentInd/>
+                                        <Ui.Box mt="2em" pb="1em" borderBottom="0.5em solid white" padding="5px">
+                                            <Ui.AssignmentInd fontSize="large" />
                                         </Ui.Box>
                                     </Ui.Grid>
                                 </Ui.Grid>
@@ -56,8 +88,6 @@ const Home = () => {
                         </Ui.Grid>
                     </Ui.Container>
                 </Ui.Box>
-                
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="wave"><path className={theme} fill-opacity="1" d="M0,192L48,202.7C96,213,192,235,288,224C384,213,480,171,576,176C672,181,768,235,864,240C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
                         <Ui.Box pb="1em">

@@ -23,81 +23,12 @@ code {
 }
 /* End Navbar */
 
-/* Helpers */
-
-/*
-.ml-1{
-  margin-left: 0.5em!important;
-}
-
-.img-fluid{
-  max-width: 100%;
-  height: auto;
-}
-
-.circle{
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  background-color: #19253d;
-  border: rgb(250, 249, 249) 0 solid;
-}
-
-.text-truncate{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.fontBold{
-        font-weight: bold;
-        -webkit-text-stroke: 0;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.linkItem{
-  display: flex;
-  align-items: baseline;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.btn-primary{
-  display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    box-sizing: border-box;
-    background-image: -webkit-gradient(linear,left top,right top,from(#000),color-stop(#ffee55),color-stop(#243eb1),to(#6da119));
-    background-image: linear-gradient(90deg,#ffee55,#000,#243eb1,#6da119);
-    background-size: 400%;
-    position: relative;
-    color: var(--button-color);
-}
-
-.d-flex{
-  display: flex;
-}
-
-.justify-content-between{
-  justify-content: space-between;
-}
-*/
-/* End Helpers */
-
-/* Home Page */
 .banner{
   top: 0;
   left: 0;
   right: 0;
-  padding-top: 7em;
-  height: 100vh;
+  padding-top: 9em;
+  padding-bottom: 6em;
   width: 100%;
   background: rgb(26, 188, 156);
 	background: -moz-linear-gradient(-45deg, rgba(26, 188, 156, 1) 0%, rgba(142, 68, 173, 1) 100%);
@@ -211,7 +142,6 @@ body::-webkit-scrollbar-thumb {
   -webkit-box-shadow: 0 5px 0 0 #088ca3;
   box-shadow: 0 5px 0 0 #088ca3;
   transition: box-shadow 0.5s;
-  transform: scale(2, 3);
 }
 /* End Navbar Buttons Shadows */
 
@@ -232,4 +162,22 @@ body::-webkit-scrollbar-thumb {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 		transform: translatey(0px);
 	}
+}
+
+#withWidthFull{
+  display: block;
+}
+
+#withNoWidthFull{
+  display: none;
+}
+
+@media(max-width: 959.98px){
+  #withWidthFull{
+    display: none;
+  }
+  
+  #withNoWidthFull{
+    display: block;
+  }
 }
