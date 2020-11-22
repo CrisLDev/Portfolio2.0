@@ -3,11 +3,8 @@ import * as Ui from '../../shared/Shared';
 import * as tecnologyService from '../../services/TecnologyService';
 import TecnologyItem from '../Tecnology/TecnologyItem';
 import { Tecnology } from '../../interfaces/Tecnology';
-import { RootState } from '../../store';
-import { useSelector } from 'react-redux';
 const Home = () => {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [tecnologies, setTecnologies] = useState<Tecnology[]>([]);
     
     const loadTecnologies = async () => {
@@ -15,9 +12,6 @@ const Home = () => {
         setTecnologies(res.data);
     }
 
-    const { theme } = useSelector((state: RootState) => state.theme);
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         loadTecnologies()
     }, []);
