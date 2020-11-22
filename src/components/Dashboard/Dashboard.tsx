@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment } from 'react'
 import * as Ui from "../../shared/Shared";
-import { User } from '../../interfaces/User';
 import UserCard from './UserCard';
 
 const mapStateToProps = (state: any) => {

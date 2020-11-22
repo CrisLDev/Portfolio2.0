@@ -15,6 +15,10 @@ code {
   margin-top: 7em;
 }
 
+*:focus{
+	outline: none;
+}
+
 /* Navbar */
 @media(max-width: 991.98px){
   .linkText{
@@ -40,13 +44,14 @@ code {
 /* End Home Page */
 
 /* Scrollbar */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 9px;               /* width of the entire scrollbar */
+  height: 5px;               /* he of the entire scrollbar */
 }
-body::-webkit-scrollbar-track {
-  background: white;      /* color of the tracking area */
+::-webkit-scrollbar-track {
+  background: #fafafa!important;      /* color of the tracking area */
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #0093E9;    /* color of the scroll thumb */
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
@@ -180,4 +185,14 @@ body::-webkit-scrollbar-thumb {
   #withNoWidthFull{
     display: block;
   }
+}
+
+@media(max-width: 518.98px){
+	#navScroll{
+		overflow: auto!important;
+	}
+
+	.nav-link{
+		padding: .5rem 0.2rem!important;
+	}
 }

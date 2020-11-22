@@ -30,7 +30,7 @@ const Navbar = () => {
             <Ui.AppBar position="fixed" color="default">
                 <Ui.Toolbar>
                     <Ui.Container className="d-flex justify-content-center">
-                        <Ui.List>
+                        <Ui.List component="nav" aria-labelledby="main navigation" className="d-flex flex-nowrap overflow-hidden" id="navScroll">
                             <Link to="/" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
@@ -41,9 +41,7 @@ const Navbar = () => {
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Link>
-                        </Ui.List>
-                        <Ui.List component="nav" aria-labelledby="main navigation" className="d-flex justify-content-center">
-                            <Link to="/projects" key="projects" className="nav-link text-uppercase">
+                            <Link to="/projects" key="projects" className="nav-link text-uppercase link-shadow">
                             <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
@@ -53,7 +51,7 @@ const Navbar = () => {
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Link>
-                            <Link to="/tecnologies" key="tecnologies" className="nav-link text-uppercase">
+                            <Link to="/tecnologies" key="tecnologies" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
@@ -64,7 +62,7 @@ const Navbar = () => {
                                 </Ui.ListItem>
                             </Link>
                             {!authenticated ? 
-                            <Link to="/actions" key="actions" className="nav-link text-uppercase">
+                            <Link to="/actions" key="actions" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
@@ -76,7 +74,7 @@ const Navbar = () => {
                             </Link>
                             :
                             <Ui.Box className="d-flex">
-                                <Link to="/dashboard" key="actions" className="nav-link text-uppercase">
+                                <Link to="/dashboard" key="actions" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
@@ -86,7 +84,7 @@ const Navbar = () => {
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Link>
-                            <Ui.Box className="nav-link text-uppercase">
+                            <Ui.Box className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button onClick={logoutClickHandler}>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
@@ -98,7 +96,7 @@ const Navbar = () => {
                             </Ui.Box>
                             </Ui.Box>
                             }
-                            <Ui.Box className="ml-auto nav-link">
+                            <Ui.Box className="ml-auto nav-link link-shadow">
                                 <Ui.ListItem button onClick={handleChangeTheme}>
                                     <Ui.Box>
                                         <Ui.Typography color="textSecondary">

@@ -31,7 +31,7 @@ const Home = () => {
                             <Ui.Grid item xs={12} sm={12} md={5} lg={4} xl={2}>
                             <Ui.Box id="withWidthFull">
                                     <Ui.Grid container spacing={3}>
-                                        <Ui.Grid item xs={4} sm={4} md={5} lg={7} xl={2}>
+                                        <Ui.Grid item xs={4} sm={4} md={7} lg={7} xl={2}>
                                             <Ui.Box>
                                                 <Ui.Typography component="p">
                                                 <svg viewBox="0 0 16 16" className="bi bi-code-slash img-fluid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -73,14 +73,35 @@ const Home = () => {
                                     </Ui.Grid>
                                 </Ui.Box>
                             </Ui.Grid>
-                            <Ui.Grid item xs={12} sm={12} md={3} lg={3} xl={2}>
+                            <Ui.Grid item xs={12} sm={12} md={4} lg={3} xl={2}>
                                 <Ui.Grid container spacing={3} justify="center">
-                                    <Ui.Grid item xs={6} sm={6} md={12} lg={12} xl={2} className="floating">
+                                    <Ui.Grid item xs={9} sm={6} md={12} lg={12} xl={2} className="floating">
                                         <Ui.Box p="1.2em">
                                             <img loading="lazy" src="https://i.imgur.com/Olx0SLG.jpg" alt="Foto De Perfil" className="rounded-circle img-fluid border" />
                                         </Ui.Box>
-                                        <Ui.Box mt="2em" pb="1em" borderBottom="0.5em solid white" padding="5px">
-                                            <Ui.AssignmentInd fontSize="large" />
+                                        <Ui.Box pb="1em" borderBottom="0.5em solid white" padding="5px">
+                                        <Ui.List className="d-flex justify-content-center">
+                                            <Ui.ListItem button>
+                                                <Ui.Box ml="0.1rem">
+                                                        <Ui.AssignmentInd fontSize="large" />
+                                                </Ui.Box>
+                                            </Ui.ListItem>
+                                            <Ui.ListItem button>
+                                                <Ui.Box ml="0.1rem">
+                                                    <Ui.GitHub fontSize="large" />
+                                                </Ui.Box>
+                                            </Ui.ListItem>
+                                            <Ui.ListItem button>
+                                                <Ui.Box ml="0.1rem">
+                                                    <Ui.Instagram fontSize="large" />
+                                                </Ui.Box>
+                                            </Ui.ListItem>
+                                            <Ui.ListItem button>
+                                                <Ui.Box ml="0.1rem">
+                                                    <Ui.Facebook fontSize="large" />
+                                                </Ui.Box>
+                                            </Ui.ListItem>
+                                        </Ui.List>
                                         </Ui.Box>
                                     </Ui.Grid>
                                 </Ui.Grid>
@@ -104,7 +125,7 @@ const Home = () => {
                         </Ui.Box>
                         <Ui.Box>
                         {tecnologies.map((tecnology) => {
-                            return <TecnologyItem tecnology={tecnology} />
+                            return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                         })}
                         </Ui.Box>
                     </Ui.Box>
