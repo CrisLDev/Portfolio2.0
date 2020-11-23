@@ -47,9 +47,13 @@ const Dashboard = (props:any) => {
                                 <UserCard user={props.user} />
                             </Ui.Box>
                         </Ui.Grid>
-                        {tecnologies.map((tecnology: Tecnology) => {
-                            return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
-                        })}
+                        <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                            <Ui.Grid container spacing={3} justify="center">
+                                {tecnologies.map((tecnology: Tecnology) => {
+                                    return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                                })}
+                            </Ui.Grid>
+                        </Ui.Grid>
                     </Ui.Grid>
                 </Ui.Container>
             </Ui.Fade>

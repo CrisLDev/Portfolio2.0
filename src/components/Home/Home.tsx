@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import * as Ui from '../../shared/Shared';
 import TecnologyItem from '../Tecnology/TecnologyItem';
@@ -19,7 +19,8 @@ const Home = () => {
     }, [tecnologies.length, dispatch]);
 
     return (
-        <Ui.Fade in>
+        <Fragment>
+            <Ui.Fade in>
             <Ui.Box>
                 <Ui.Box className="banner">
                     <Ui.Container>
@@ -142,6 +143,7 @@ const Home = () => {
                 </Ui.Box>
             </Ui.Box>
         </Ui.Fade>
+        </Fragment>
     )
 }
 
