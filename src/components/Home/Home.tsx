@@ -118,14 +118,25 @@ const Home = () => {
                             </Ui.List>
                         </Ui.Box>
                         <Ui.Box>
-                        {tecnologies.map((tecnology) => {
-                            return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
-                        })}
+                        Aqui iran los proyectos Xs
                         </Ui.Box>
                     </Ui.Box>
                 </Ui.Container>
-                <Ui.Box className="banner">
-
+                <Ui.Box className="banner pt-5">
+                    <Ui.Container>
+                        <Ui.Box>
+                            <Ui.Box pb="3em">
+                                <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold">
+                                        Tecnologías
+                                </Ui.Typography> 
+                            </Ui.Box>
+                        </Ui.Box>
+                        <Ui.Grid container spacing={3} justify="center">
+                            {tecnologies.map((tecnology) => {
+                                return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                            })}
+                        </Ui.Grid>
+                    </Ui.Container>
                 </Ui.Box>
             </Ui.Box>
         </Ui.Fade>

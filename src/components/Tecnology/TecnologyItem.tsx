@@ -11,7 +11,7 @@ const useStyles = Ui.makeStyles((theme: Theme) =>
 Ui.createStyles({
     avatarModified: {
         display: `block!important`,
-        backgroundColor: `#fff`,
+        backgroundColor: `transparent`,
     }
   }),
 );
