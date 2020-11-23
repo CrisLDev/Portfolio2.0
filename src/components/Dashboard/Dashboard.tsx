@@ -1,7 +1,11 @@
-import { connect } from 'react-redux';
-import React, { Fragment } from 'react'
+import { connect, useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useEffect } from 'react'
 import * as Ui from "../../shared/Shared";
 import UserCard from './UserCard';
+import TecnologyItem from '../Tecnology/TecnologyItem';
+import { RootState } from '../../store';
+import { Tecnology } from '../../interfaces/Tecnology';
+import {getTecnologies} from '../../store/actions/tecnologiesAction';
 
 const mapStateToProps = (state: any) => {
     return {
@@ -10,6 +14,18 @@ const mapStateToProps = (state: any) => {
 }
 
 const Dashboard = (props:any) => {
+
+    const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
+
+    const dispatch = useDispatch();
+
+    
+    useEffect(() => {
+        if(tecnologies.length <= 0){
+            dispatch(getTecnologies());
+        }
+    }, [tecnologies.length, dispatch]);
+
 /*
     const [user, setUser] = useState<User>();
 
@@ -31,6 +47,9 @@ const Dashboard = (props:any) => {
                                 <UserCard user={props.user} />
                             </Ui.Box>
                         </Ui.Grid>
+                        {tecnologies.map((tecnology: Tecnology) => {
+                            return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                        })}
                     </Ui.Grid>
                 </Ui.Container>
             </Ui.Fade>

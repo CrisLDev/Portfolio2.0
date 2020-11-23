@@ -8,13 +8,15 @@ import { RootState } from '../../store';
 
 const Home = () => {
 
-    const tecnolgies = useSelector((state: RootState) => state.tecnology.tecnologies);
+    const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getTecnologies());
-    }, [dispatch]);
+        if(tecnologies.length <= 0){
+            dispatch(getTecnologies());
+        }
+    }, [tecnologies.length, dispatch]);
 
     return (
         <Ui.Fade in>
@@ -132,7 +134,7 @@ const Home = () => {
                             </Ui.Box>
                         </Ui.Box>
                         <Ui.Grid container spacing={3} justify="center">
-                        {tecnolgies.map((tecnology: Tecnology) => {
+                        {tecnologies.map((tecnology: Tecnology) => {
                                 return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                             })}
                         </Ui.Grid>

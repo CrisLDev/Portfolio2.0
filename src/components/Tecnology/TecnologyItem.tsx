@@ -58,7 +58,7 @@ const TecnologyItem = ({tecnology}: Props) => {
                 </Ui.DialogContentText>
                 </Ui.DialogContent>
                 <Ui.DialogActions>
-                <Ui.Button onClick={handleClose} color="primary" autoFocus>
+                <Ui.Button onClick={handleClose} color="default" autoFocus>
                     Cerrar
                 </Ui.Button>
                 </Ui.DialogActions>
