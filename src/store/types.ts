@@ -100,6 +100,8 @@ export type ThemeAction = setThemeAction;
 
 export const SET_TECNOLOGIES = 'SET_TECNOLOGIES';
 
+export const SET_LOADING_TECNOLOGIES = 'SET_LOADING_TECNOLOGIES';
+
 export const SET_GET_TECNOLOGIES_FAIL = 'SET_GET_TECNOLOGIES_FAIL';
 
 export const SET_REGISTER_TECNOLOGY = 'SET_REGISTER_TECNOLOGY';
@@ -130,4 +132,9 @@ interface setRegisterTecnologyFailAction{
     type: typeof SET_REGISTER_FAIL_TECNOLOGY;
 }
 
-export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingAction |  setRegisterTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction;
+interface setLoadingTecnologyAction{
+    type: typeof SET_LOADING_TECNOLOGIES;
+    payload: boolean;
+}
+
+export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingTecnologyAction |  setRegisterTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction;
