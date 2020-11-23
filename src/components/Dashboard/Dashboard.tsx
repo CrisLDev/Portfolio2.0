@@ -49,6 +49,18 @@ const Dashboard = (props:any) => {
                         </Ui.Grid>
                         <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Ui.Grid container spacing={3} justify="center">
+                                <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                    <Ui.Paper elevation={3}>
+                                        <Ui.Box className="d-flex justify-content-between" paddingLeft="1em" paddingRight="1em" paddingTop="1em" paddingBottom="1em">
+                                            <Ui.Typography variant="h6" className="text-uppercase m-0">
+                                                Tecnologias
+                                            </Ui.Typography>
+                                            <Ui.Button variant="contained" color="primary">
+                                                Crear
+                                            </Ui.Button>
+                                        </Ui.Box>
+                                    </Ui.Paper>
+                                </Ui.Grid>
                                 {tecnologies.map((tecnology: Tecnology) => {
                                     return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                                 })}
