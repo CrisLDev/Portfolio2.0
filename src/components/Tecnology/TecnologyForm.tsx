@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, Fragment, useState} from 'react';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
 import * as tecnologyService from '../../services/TecnologyService';
@@ -32,16 +32,21 @@ const TecnologyForm = () => {
     }
 
     return (
-        <Ui.Fade in>
+        <Fragment>
+            <Ui.Fade in>
             <Ui.Box>
                 <Ui.Box className="banner">
                     <Ui.Container>
-                        <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold">
-                            Agrega una nueva tecnología
-                        </Ui.Typography> 
+                        <Ui.Grid container spacing={3} justify="center">
+                            <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12} className="text-center">
+                                <Ui.Typography variant="h4" component="h4" gutterBottom>
+                                    Agregar una nueva tecnología
+                                </Ui.Typography>
+                            </Ui.Grid>
+                        </Ui.Grid>
                     </Ui.Container>
                 </Ui.Box>
-                <Ui.Container style={{backgroundColor: `rgba(243, 243, 243, 0.30)`}}>
+                <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
                     <Ui.Grid container justify="center">
                         <Ui.Grid item xs={12} sm={8} md={9} lg={5} xl={5}>
@@ -105,6 +110,7 @@ const TecnologyForm = () => {
                 </Ui.Container>
             </Ui.Box>
         </Ui.Fade>
+        </Fragment>
     )
 }
 

@@ -6,6 +6,7 @@ import TecnologyItem from '../Tecnology/TecnologyItem';
 import { RootState } from '../../store';
 import { Tecnology } from '../../interfaces/Tecnology';
 import {getTecnologies} from '../../store/actions/tecnologiesAction';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state: any) => {
     return {
@@ -55,9 +56,11 @@ const Dashboard = (props:any) => {
                                             <Ui.Typography variant="h6" className="text-uppercase m-0">
                                                 Tecnologias
                                             </Ui.Typography>
-                                            <Ui.Button variant="contained" color="primary">
-                                                Crear
-                                            </Ui.Button>
+                                            <Link to="/tecnologies/create">
+                                                <Ui.Button variant="contained" color="primary">
+                                                    Crear
+                                                </Ui.Button>
+                                            </Link>
                                         </Ui.Box>
                                     </Ui.Paper>
                                 </Ui.Grid>
