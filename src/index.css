@@ -15,8 +15,9 @@ code {
   margin-top: 7em;
 }
 
-*:focus{
-	outline: none;
+button:focus {
+    outline: none!important;
+    outline: none!important;
 }
 
 /* Navbar */
