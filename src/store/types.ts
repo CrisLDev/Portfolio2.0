@@ -1,5 +1,7 @@
 import { User } from "../interfaces/User";
 
+import {Tecnology} from '../interfaces/Tecnology';
+
 export const SET_USER = 'SET_USER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -94,5 +96,38 @@ interface setThemeAction{
     payload: string;
 }
 
-
 export type ThemeAction = setThemeAction;
+
+export const SET_TECNOLOGIES = 'SET_TECNOLOGIES';
+
+export const SET_GET_TECNOLOGIES_FAIL = 'SET_GET_TECNOLOGIES_FAIL';
+
+export const SET_REGISTER_TECNOLOGY = 'SET_REGISTER_TECNOLOGY';
+
+export const SET_REGISTER_FAIL_TECNOLOGY = 'SET_REGISTER_FAIL_TECNOLOGY';
+
+export interface TecnologyState {
+    tecnologies: Tecnology[] | null;
+    loading: boolean;
+}
+
+// Actions
+
+interface setTecnologiesAction{
+    type: typeof SET_TECNOLOGIES;
+    payload: Tecnology[];
+}
+
+interface setRegisterTecnologyAction{
+    type: typeof SET_REGISTER_TECNOLOGY;
+}
+
+interface setGetTecnologiesFailAction{
+    type: typeof SET_GET_TECNOLOGIES_FAIL;
+}
+
+interface setRegisterTecnologyFailAction{
+    type: typeof SET_REGISTER_FAIL_TECNOLOGY;
+}
+
+export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingAction |  setRegisterTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction;

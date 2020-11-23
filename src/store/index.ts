@@ -6,9 +6,12 @@ import authReducer from './reducers/authReducer';
 
 import themeReducer from './reducers/themeReducer';
 
+import tecnologyReducer from './reducers/tecnologyReducer';
+
 const rootReducer = combineReducers({
     auth: authReducer,
-    theme: themeReducer
+    theme: themeReducer,
+    tecnology: tecnologyReducer
 });
 
 const store = createStore(

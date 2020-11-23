@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import * as Ui from '../../shared/Shared';
-import * as tecnologyService from '../../services/TecnologyService';
 import TecnologyItem from '../Tecnology/TecnologyItem';
+import {getTecnologies} from '../../store/actions/tecnologiesAction';
 import { Tecnology } from '../../interfaces/Tecnology';
+import { RootState } from '../../store';
+
 const Home = () => {
 
-    const [tecnologies, setTecnologies] = useState<Tecnology[]>([]);
-    
-    const loadTecnologies = async () => {
-        const res = await tecnologyService.getTecnologies();
-        setTecnologies(res.data);
-    }
+    const tecnolgies = useSelector((state: RootState) => state.tecnology.tecnologies);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        loadTecnologies()
-    }, []);
+        dispatch(getTecnologies());
+    }, [dispatch]);
 
     return (
         <Ui.Fade in>
@@ -132,7 +132,7 @@ const Home = () => {
                             </Ui.Box>
                         </Ui.Box>
                         <Ui.Grid container spacing={3} justify="center">
-                            {tecnologies.map((tecnology) => {
+                        {tecnolgies.map((tecnology: Tecnology) => {
                                 return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                             })}
                         </Ui.Grid>
