@@ -1,9 +1,9 @@
 import React, {ChangeEvent, FormEvent, Fragment, useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
-import * as tecnologyService from '../../services/TecnologyService';
-import {toast} from 'react-toastify';
-import {useHistory} from 'react-router-dom';
+import { registerTecnology } from '../../store/actions/tecnologiesAction';
+import { useHistory } from 'react-router-dom';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -19,6 +19,8 @@ const TecnologyForm = () => {
         urlImage: ""
     });
 
+    const dispatch = useDispatch();
+
     const handleInputChange = (e: InputChange) => {
         setTecnology({...tecnology, [e.target.name]: e.target.value,
         })
@@ -26,9 +28,8 @@ const TecnologyForm = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await tecnologyService.createTecnology(tecnology);
-        toast.success("Nueva tecnología agregada.");
-        history.push('/');
+        await dispatch(registerTecnology(tecnology));
+        return history.push('/');
     }
 
     return (

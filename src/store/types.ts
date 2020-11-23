@@ -104,9 +104,9 @@ export const SET_LOADING_TECNOLOGIES = 'SET_LOADING_TECNOLOGIES';
 
 export const SET_GET_TECNOLOGIES_FAIL = 'SET_GET_TECNOLOGIES_FAIL';
 
-export const SET_REGISTER_TECNOLOGY = 'SET_REGISTER_TECNOLOGY';
+export const SET_REGISTER_TECNOLOGY_SUCCESS = 'SET_REGISTER_TECNOLOGY_SUCCESS';
 
-export const SET_REGISTER_FAIL_TECNOLOGY = 'SET_REGISTER_FAIL_TECNOLOGY';
+export const SET_REGISTER_TECNOLOGY_FAIL = 'SET_REGISTER_FAIL_TECNOLOGY';
 
 export interface TecnologyState {
     tecnologies: Tecnology[] | null;
@@ -120,16 +120,17 @@ interface setTecnologiesAction{
     payload: Tecnology[];
 }
 
-interface setRegisterTecnologyAction{
-    type: typeof SET_REGISTER_TECNOLOGY;
-}
-
 interface setGetTecnologiesFailAction{
     type: typeof SET_GET_TECNOLOGIES_FAIL;
 }
 
 interface setRegisterTecnologyFailAction{
-    type: typeof SET_REGISTER_FAIL_TECNOLOGY;
+    type: typeof SET_REGISTER_TECNOLOGY_FAIL;
+}
+
+interface setRegisterTecnologySuccessAction{
+    type: typeof SET_REGISTER_TECNOLOGY_SUCCESS;
+    payload: Tecnology;
 }
 
 interface setLoadingTecnologyAction{
@@ -137,4 +138,4 @@ interface setLoadingTecnologyAction{
     payload: boolean;
 }
 
-export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingTecnologyAction |  setRegisterTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction;
+export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction | setRegisterTecnologySuccessAction;

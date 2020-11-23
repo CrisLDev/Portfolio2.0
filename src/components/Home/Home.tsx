@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Ui from '../../shared/Shared';
 import TecnologyItem from '../Tecnology/TecnologyItem';
 import {getTecnologies} from '../../store/actions/tecnologiesAction';
