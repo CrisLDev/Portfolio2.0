@@ -2,6 +2,7 @@ import React from 'react';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
+import {useHistory} from 'react-router';
 
 interface Props{
     tecnology: Tecnology
@@ -18,6 +19,18 @@ Ui.createStyles({
 
 const TecnologyItem = ({tecnology}: Props) => {
 
+    const history = useHistory();
+
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+    const handleClickMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseMenu = () => {
+        setAnchorEl(null);
+    };
+
     const classes = useStyles();
     
     const [open, setOpen] = React.useState(false);
@@ -25,15 +38,35 @@ const TecnologyItem = ({tecnology}: Props) => {
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     
-      const handleClose = () => {
+    const handleCloseEdit = () => {
+        history.push(`/tecnologies/update/${tecnology._id}`);
+        setOpen(false);
+    };
+
+    const handleCloseDelete = () => {
+        history.push(`/update/${tecnology._id}`);
         setOpen(false);
     };
 
     return (
         <Ui.Grid item xs={12} sm={4} md={3} lg={6} xl={6}>
             <Ui.Card style={{height: `100%`}}>
-               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img src={tecnology.urlImage} alt={tecnology.name} /></Ui.Avatar>} title={tecnology.name} action={<Ui.IconButton aria-label="settings"><Ui.MoreVert/></Ui.IconButton>} />
+               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img src={tecnology.urlImage} alt={tecnology.name} /></Ui.Avatar>} title={tecnology.name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+               <Ui.Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleCloseMenu}
+                >
+                    <Ui.MenuItem onClick={handleCloseEdit}>Editar</Ui.MenuItem>
+                    <Ui.MenuItem onClick={handleCloseDelete}>Eliminar</Ui.MenuItem>
+                </Ui.Menu>
                <Ui.CardContent>
                    <Ui.Typography variant="body2" color="textSecondary" component="p" style={{overflow: `hidden`, textOverflow:`ellipsis`, display: `-webkit-box`, WebkitLineClamp: 3, WebkitBoxOrient: `vertical`}}>
                         {tecnology.resume}

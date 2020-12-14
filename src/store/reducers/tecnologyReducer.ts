@@ -1,7 +1,8 @@
-import {SET_LOADING_TECNOLOGIES, SET_TECNOLOGIES, TecnologyState} from '../types';
+import {SET_LOADING_TECNOLOGIES, SET_TECNOLOGIES, TecnologyState, SET_TECNOLOGY} from '../types';
 
 const initialState: TecnologyState = {
     tecnologies: [],
+    tecnologyById: {},
     loading: false
 }
 
@@ -12,6 +13,11 @@ export default function reducer(state = initialState, action: any){
             return {
                 ...state,
                 tecnologies: payload
+            }
+        case SET_TECNOLOGY:
+                return {
+                    ...state,
+                    tecnologyById: payload.tecnologyById
             }
         case SET_LOADING_TECNOLOGIES:
             return {

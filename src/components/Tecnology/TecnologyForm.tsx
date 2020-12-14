@@ -1,13 +1,25 @@
-import React, {ChangeEvent, FormEvent, Fragment, useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {ChangeEvent, FormEvent, Fragment, useState, useEffect} from 'react';
+import {connect, useDispatch} from 'react-redux';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
-import { registerTecnology } from '../../store/actions/tecnologiesAction';
-import { useHistory } from 'react-router-dom';
+import { getTecnology, registerTecnology } from '../../store/actions/tecnologiesAction';
+import { useHistory, useParams } from 'react-router-dom';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
-const TecnologyForm = () => {
+interface Params {
+    id: string;
+}
+
+const mapStateToProps = (state: any) => {
+    return {
+        tecnologyStore: state.tecnology.tecnologyById
+    }
+}
+
+const TecnologyForm = (props:any) => {
+
+    const params = useParams<Params>();
 
     const history = useHistory();
 
@@ -32,6 +44,19 @@ const TecnologyForm = () => {
         return history.push('/');
     }
 
+    useEffect(() => {
+        if (params.id){
+            dispatch(getTecnology(params.id));
+            setTecnology({
+                name: props.tecnologyStore.name,
+                description: props.tecnologyStore.description,
+                resume: props.tecnologyStore.resume,
+                url: props.tecnologyStore.url,
+                urlImage: props.tecnologyStore.urlImage,
+            });
+        }
+    }, [dispatch, setTecnology])
+
     return (
         <Fragment>
             <Ui.Fade in>
@@ -41,7 +66,11 @@ const TecnologyForm = () => {
                         <Ui.Grid container spacing={3} justify="center">
                             <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12} className="text-center">
                                 <Ui.Typography variant="h4" component="h4" gutterBottom>
-                                    Agregar una nueva tecnología
+                                {
+                                    params.id ?
+                                    'Editar una tecnología' :
+                                    'Agregar una nueva tecnología'
+                                }
                                 </Ui.Typography>
                             </Ui.Grid>
                         </Ui.Grid>
@@ -60,6 +89,7 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa un nombre" 
                                 fullWidth 
                                 margin="normal"
+                                value={tecnology.name}
                                 onChange={handleInputChange} >
                                 </Ui.TextField>
                                 <Ui.TextField 
@@ -71,6 +101,7 @@ const TecnologyForm = () => {
                                 rowsMax={4}
                                 fullWidth 
                                 margin="normal"
+                                value={tecnology.resume}
                                 onChange={handleInputChange} >
                                 </Ui.TextField>
                                 <Ui.TextField 
@@ -82,6 +113,7 @@ const TecnologyForm = () => {
                                 rowsMax={4} 
                                 fullWidth 
                                 margin="normal"
+                                value={tecnology.description}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="url" 
@@ -90,6 +122,7 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa la Url principal" 
                                 fullWidth 
                                 margin="normal"
+                                value={tecnology.url}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="urlImage" 
@@ -98,12 +131,17 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa la url de la imagen" 
                                 fullWidth 
                                 margin="normal"
+                                value={tecnology.urlImage}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.Box mt="0.5em">
                                     <Ui.Button type="submit" variant="contained" color="primary" fullWidth>
-                                        Enviar
-                                    </Ui.Button>
-                                </Ui.Box>
+                                        {
+                                            params.id ?
+                                                'Editar' :
+                                                'Crear'
+                                        }
+                                        </Ui.Button>
+                                    </Ui.Box>
                             </form>
                         </Ui.Grid>
                     </Ui.Grid>
@@ -115,4 +153,4 @@ const TecnologyForm = () => {
     )
 }
 
-export default TecnologyForm
+export default connect(mapStateToProps)(TecnologyForm)

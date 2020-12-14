@@ -53,6 +53,7 @@ const App = () => {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/tecnologies" component={TecnologyList} />
                     <Route exact path="/tecnologies/create" component={TecnologyForm} />
+                    <Route exact path="/tecnologies/update/:id" component={TecnologyForm} />
                     <PublicRoute exact path="/actions" component={UserActions} />
                     <PrivateRoute exact path="/dashboard" component={Dashboard} />
                     </Switch>

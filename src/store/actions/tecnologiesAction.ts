@@ -1,6 +1,6 @@
 import {ThunkAction} from 'redux-thunk';
 
-import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS} from '../types';
+import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS, SET_TECNOLOGY, SET_GET_TECNOLOGY_FAIL} from '../types';
 
 import {setError, setSuccess} from './authAction';
 
@@ -25,6 +25,28 @@ export const getTecnologies = (): ThunkAction<void, RootState, null, Tecnologies
         const errors = err.response.data.errors;
         dispatch({
             type: SET_GET_TECNOLOGIES_FAIL
+        });
+        dispatch(setError(errors[0].msg));
+        return dispatch(setLoading(false));
+    }
+}
+
+
+// Load Tecnologies
+export const getTecnology = (id: string): ThunkAction<void, RootState, null, TecnologiesAction> => async dispatch => {
+    try {
+        dispatch(setLoading(true));
+        const tecnology = await tecnologyService.getTecnology(id);
+        dispatch({
+            type: SET_TECNOLOGY,
+            payload: tecnology.data
+        });
+        dispatch(setSuccess('Tecnology loaded successfully'));
+        return dispatch(setLoading(false));
+    } catch (err){
+        const errors = err.response.data.errors;
+        dispatch({
+            type: SET_GET_TECNOLOGY_FAIL
         });
         dispatch(setError(errors[0].msg));
         return dispatch(setLoading(false));
