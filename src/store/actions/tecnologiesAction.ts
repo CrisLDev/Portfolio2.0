@@ -1,6 +1,6 @@
 import {ThunkAction} from 'redux-thunk';
 
-import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS, SET_TECNOLOGY, SET_GET_TECNOLOGY_FAIL} from '../types';
+import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS, SET_TECNOLOGY, SET_GET_TECNOLOGY_FAIL, SET_EDIT_TECNOLOGY_SUCCESS, SET_EDIT_TECNOLOGY_FAIL} from '../types';
 
 import {setError, setSuccess} from './authAction';
 
@@ -32,7 +32,7 @@ export const getTecnologies = (): ThunkAction<void, RootState, null, Tecnologies
 }
 
 
-// Load Tecnologies
+// Load Tecnology
 export const getTecnology = (id: string): ThunkAction<void, RootState, null, TecnologiesAction> => async dispatch => {
     try {
         dispatch(setLoading(true));
@@ -53,6 +53,7 @@ export const getTecnology = (id: string): ThunkAction<void, RootState, null, Tec
     }
 }
 
+// Register Tecnology
 export const registerTecnology = (data: Tecnology): ThunkAction<void, RootState, null, TecnologiesAction> => {
     return async dispatch => {
         const config = {
@@ -84,6 +85,44 @@ export const registerTecnology = (data: Tecnology): ThunkAction<void, RootState,
             dispatch(setError(errors[0].msg));
             dispatch({
                 type: SET_REGISTER_TECNOLOGY_FAIL
+            });
+        }
+
+    }
+}
+
+// Edit Tecnology
+export const editTecnology = (id: string, data: Tecnology): ThunkAction<void, RootState, null, TecnologiesAction> => {
+    return async dispatch => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const tecnologyData: Tecnology = {
+            name: data.name,
+            resume: data.resume,
+            description: data.description,
+            url: data.url,
+            urlImage: data.urlImage
+        }
+
+        try {
+            dispatch(setLoading(true));
+            const res = await tecnologyService.editTecnology(id, tecnologyData, config);
+            dispatch({
+                type: SET_EDIT_TECNOLOGY_SUCCESS,
+                payload: res.data
+            });
+            dispatch(setSuccess('Tecnologies updated successfully'));
+            toast.success("Tecnología editada correctamente.");
+            return dispatch(setLoading(false));
+        } catch (err) {
+            const errors = err.response.data.errors;
+            dispatch(setError(errors[0].msg));
+            dispatch({
+                type: SET_EDIT_TECNOLOGY_FAIL
             });
         }
 

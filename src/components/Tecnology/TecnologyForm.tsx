@@ -1,9 +1,10 @@
 import React, {ChangeEvent, FormEvent, Fragment, useState, useEffect} from 'react';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
-import { getTecnology, registerTecnology } from '../../store/actions/tecnologiesAction';
+import { getTecnology, registerTecnology, editTecnology, getTecnologies } from '../../store/actions/tecnologiesAction';
 import { useHistory, useParams } from 'react-router-dom';
+import { RootState } from '../../store';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -11,24 +12,20 @@ interface Params {
     id: string;
 }
 
-const mapStateToProps = (state: any) => {
-    return {
-        tecnologyStore: state.tecnology.tecnologyById
-    }
-}
-
-const TecnologyForm = (props:any) => {
+const TecnologyForm = () => {
 
     const params = useParams<Params>();
 
     const history = useHistory();
 
+    const tecnologyById = useSelector((state: RootState) => state.tecnology.tecnologyById);
+
     const [tecnology, setTecnology] = useState<Tecnology>({
-        name: "",
-        resume: "",
-        description: "",
-        url: "",
-        urlImage: ""
+        name: '',
+        resume: '',
+        description: '',
+        url: '',
+        urlImage: ''
     });
 
     const dispatch = useDispatch();
@@ -40,22 +37,28 @@ const TecnologyForm = (props:any) => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await dispatch(registerTecnology(tecnology));
-        return history.push('/');
+        if (params.id){
+            await dispatch(editTecnology(params.id, tecnology));
+            await dispatch(getTecnologies());
+            return history.push('/');
+        }else{
+            await dispatch(registerTecnology(tecnology));
+            return history.push('/');
+        }
     }
 
     useEffect(() => {
         if (params.id){
             dispatch(getTecnology(params.id));
             setTecnology({
-                name: props.tecnologyStore.name,
-                description: props.tecnologyStore.description,
-                resume: props.tecnologyStore.resume,
-                url: props.tecnologyStore.url,
-                urlImage: props.tecnologyStore.urlImage,
+                name: tecnologyById.name,
+                description: tecnologyById.description,
+                resume: tecnologyById.resume,
+                url: tecnologyById.url,
+                urlImage: tecnologyById.urlImage,
             });
         }
-    }, [dispatch, setTecnology])
+    }, [])
 
     return (
         <Fragment>
@@ -153,4 +156,4 @@ const TecnologyForm = (props:any) => {
     )
 }
 
-export default connect(mapStateToProps)(TecnologyForm)
+export default TecnologyForm
