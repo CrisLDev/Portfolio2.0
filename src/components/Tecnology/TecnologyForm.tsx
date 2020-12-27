@@ -50,13 +50,7 @@ const TecnologyForm = () => {
     useEffect(() => {
         if (params.id){
             dispatch(getTecnology(params.id));
-            setTecnology({
-                name: tecnologyById.name,
-                description: tecnologyById.description,
-                resume: tecnologyById.resume,
-                url: tecnologyById.url,
-                urlImage: tecnologyById.urlImage,
-            });
+            setTecnology(tecnologyById);
         }
     }, [])
 
