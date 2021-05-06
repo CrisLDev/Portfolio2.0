@@ -1,11 +1,11 @@
 import React from 'react';
-import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
 import {useHistory} from 'react-router';
+import { Project } from '../../interfaces/Project';
 
 interface Props{
-    tecnology: Tecnology
+    project: Project
 }
 
 const useStyles = Ui.makeStyles((theme: Theme) =>
@@ -17,7 +17,7 @@ Ui.createStyles({
   }),
 );
 
-const TecnologyItem = ({tecnology}: Props) => {
+const ProjectItem = ({project}: Props) => {
 
     const history = useHistory();
 
@@ -44,19 +44,19 @@ const TecnologyItem = ({tecnology}: Props) => {
     };
     
     const handleCloseEdit = () => {
-        history.push(`/tecnologies/update/${tecnology._id}`);
+        history.push(`/projects/update/${project._id}`);
         setOpen(false);
     };
 
     const handleCloseDelete = () => {
-        history.push(`/update/${tecnology._id}`);
+        history.push(`/update/${project._id}`);
         setOpen(false);
     };
 
     return (
         <Ui.Grid item xs={12} sm={4} md={3} lg={6} xl={6}>
             <Ui.Card style={{height: `100%`}}>
-               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img className="img-fluid" src={tecnology.urlImage} alt={tecnology.name} /></Ui.Avatar>} title={tecnology.name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img className="img-fluid" src={project.es_name} alt={project.es_name} /></Ui.Avatar>} title={project.es_name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
                <Ui.Menu
                     id="simple-menu"
                     anchorEl={anchorEl}
@@ -69,7 +69,7 @@ const TecnologyItem = ({tecnology}: Props) => {
                 </Ui.Menu>
                <Ui.CardContent>
                    <Ui.Typography variant="body2" color="textSecondary" component="p" style={{overflow: `hidden`, textOverflow:`ellipsis`, display: `-webkit-box`, WebkitLineClamp: 3, WebkitBoxOrient: `vertical`}}>
-                        {tecnology.es_resume}
+                        {project.es_description}
                    </Ui.Typography>
                </Ui.CardContent>
                <Ui.CardActions disableSpacing>
@@ -84,10 +84,10 @@ const TecnologyItem = ({tecnology}: Props) => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <Ui.DialogTitle id="alert-dialog-title">{tecnology.name}</Ui.DialogTitle>
+                <Ui.DialogTitle id="alert-dialog-title">{project.es_name}</Ui.DialogTitle>
                 <Ui.DialogContent>
                 <Ui.DialogContentText id="alert-dialog-description" style={{whiteSpace: `pre-line`}}>
-                    {tecnology.es_description}
+                    {project.es_description}
                 </Ui.DialogContentText>
                 </Ui.DialogContent>
                 <Ui.DialogActions>
@@ -100,4 +100,4 @@ const TecnologyItem = ({tecnology}: Props) => {
     )
 }
 
-export default TecnologyItem
+export default ProjectItem

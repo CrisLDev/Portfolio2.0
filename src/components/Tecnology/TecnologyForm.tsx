@@ -1,8 +1,8 @@
 import React, {ChangeEvent, FormEvent, Fragment, useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
-import { getTecnology, registerTecnology, editTecnology, getTecnologies } from '../../store/actions/tecnologiesAction';
+import { getTecnology, registerTecnology, editTecnology } from '../../store/actions/tecnologiesAction';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../../store';
 
@@ -18,28 +18,22 @@ const TecnologyForm = () => {
 
     const history = useHistory();
 
-    const tecnologyById = useSelector((state: RootState) => state.tecnology.tecnologyById);
-
     const [tecnology, setTecnology] = useState<Tecnology>({
         name: '',
-        resume: '',
-        description: '',
+        es_resume: '',
+        es_description: '',
+        en_resume: '',
+        en_description: '',
         url: '',
         urlImage: ''
     });
 
     const dispatch = useDispatch();
 
-    const handleInputChange = (e: InputChange) => {
-        setTecnology({...tecnology, [e.target.name]: e.target.value,
-        })
-    }
-
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (params.id){
             await dispatch(editTecnology(params.id, tecnology));
-            await dispatch(getTecnologies());
             return history.push('/');
         }else{
             await dispatch(registerTecnology(tecnology));
@@ -47,12 +41,39 @@ const TecnologyForm = () => {
         }
     }
 
+    const tecnologyById = useSelector((state: RootState) => state.tecnology.tecnologyById);
+
+    const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
+
+    const handleInputChange = (e: InputChange) => {
+        setTecnology({...tecnology, [e.target.name]: e.target.value,
+        })
+    }
+
     useEffect(() => {
         if (params.id){
-            dispatch(getTecnology(params.id));
-            setTecnology(tecnologyById);
+            const tecnology = tecnologies.find((tech:Tecnology) => tech._id === params.id);
+            if(tecnology){
+                setTecnology(tecnology);
+            }else{
+                dispatch(getTecnology(params.id));
+                setTecnology(tecnologyById);
+            }
+            document.title = "Editar tecnología"
+        }else{
+            document.title = "Crear tecnología"
         }
-    }, [])
+    }, [dispatch, params.id, tecnologies, tecnologyById])
+
+    const {
+        name,
+        es_resume,
+        es_description,
+        en_resume,
+        en_description,
+        url,
+        urlImage
+    } = tecnology;
 
     return (
         <Fragment>
@@ -86,31 +107,54 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa un nombre" 
                                 fullWidth 
                                 margin="normal"
-                                value={tecnology.name}
+                                value={name}
                                 onChange={handleInputChange} >
                                 </Ui.TextField>
                                 <Ui.TextField 
-                                name="resume" 
-                                label="Resumen" 
+                                name="es_resume" 
+                                label="Es Resumen" 
                                 variant="outlined"
                                 placeholder="Ingresa un pequeño resumen" 
                                 multiline 
                                 rowsMax={4}
                                 fullWidth 
                                 margin="normal"
-                                value={tecnology.resume}
+                                value={es_resume}
                                 onChange={handleInputChange} >
                                 </Ui.TextField>
                                 <Ui.TextField 
-                                name="description" 
-                                label="Descripción" 
+                                name="es_description" 
+                                label="Es Descripción" 
                                 variant="outlined" 
                                 placeholder="Ingresa una descripción" 
                                 multiline 
                                 rowsMax={4} 
                                 fullWidth 
                                 margin="normal"
-                                value={tecnology.description}
+                                value={es_description}
+                                onChange={handleInputChange}></Ui.TextField>
+                                <Ui.TextField 
+                                name="en_resume" 
+                                label="En Resumen" 
+                                variant="outlined"
+                                placeholder="Ingresa un pequeño resumen" 
+                                multiline 
+                                rowsMax={4}
+                                fullWidth 
+                                margin="normal"
+                                value={en_resume}
+                                onChange={handleInputChange} >
+                                </Ui.TextField>
+                                <Ui.TextField 
+                                name="en_description" 
+                                label="En Descripción" 
+                                variant="outlined" 
+                                placeholder="Ingresa una descripción" 
+                                multiline 
+                                rowsMax={4} 
+                                fullWidth 
+                                margin="normal"
+                                value={en_description}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="url" 
@@ -119,7 +163,7 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa la Url principal" 
                                 fullWidth 
                                 margin="normal"
-                                value={tecnology.url}
+                                value={url}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="urlImage" 
@@ -128,7 +172,7 @@ const TecnologyForm = () => {
                                 placeholder="Ingresa la url de la imagen" 
                                 fullWidth 
                                 margin="normal"
-                                value={tecnology.urlImage}
+                                value={urlImage}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.Box mt="0.5em">
                                     <Ui.Button type="submit" variant="contained" color="primary" fullWidth>

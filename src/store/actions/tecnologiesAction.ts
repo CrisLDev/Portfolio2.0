@@ -64,8 +64,10 @@ export const registerTecnology = (data: Tecnology): ThunkAction<void, RootState,
 
         const tecnologyData: Tecnology = {
             name: data.name,
-            resume: data.resume,
-            description: data.description,
+            es_resume: data.es_resume,
+            es_description: data.es_description,
+            en_resume: data.en_resume,
+            en_description: data.en_description,
             url: data.url,
             urlImage: data.urlImage
         }
@@ -102,8 +104,10 @@ export const editTecnology = (id: string, data: Tecnology): ThunkAction<void, Ro
 
         const tecnologyData: Tecnology = {
             name: data.name,
-            resume: data.resume,
-            description: data.description,
+            es_resume: data.es_resume,
+            es_description: data.es_description,
+            en_resume: data.en_resume,
+            en_description: data.en_description,
             url: data.url,
             urlImage: data.urlImage
         }

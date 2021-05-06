@@ -20,9 +20,14 @@ export default function reducer(state = initialState, action: any){
                     tecnologyById: payload.tecnologyById
             }
         case SET_EDIT_TECNOLOGY_SUCCESS:
+            const updatedTecnologies = state.tecnologies?.splice(
+                state.tecnologies?.findIndex(tecnology => tecnology._id === payload.tecnologyUpdated._id), 
+                0, 
+                payload.tecnologyUpdated
+                );
             return {
                 ...state,
-                tecnologyById: payload
+                tecnologies: updatedTecnologies
             }
         case SET_LOADING_TECNOLOGIES:
             return {

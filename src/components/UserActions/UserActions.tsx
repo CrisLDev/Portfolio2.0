@@ -1,9 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import * as Ui from '../../shared/Shared';
 import Login from './Login';
 import Register from './Register';
 
 const UserActions = () => {
+
+    useEffect(() => {
+        document.title = "Inicia Sesión o Regístrate"
+    }, [])
+
     return (
         <Fragment>
             <Ui.Fade in>
@@ -19,14 +24,8 @@ const UserActions = () => {
                             </Ui.Grid>
                         </Ui.Container>
                     </Ui.Box>
-                    <Ui.Container style={{backgroundColor: `rgba(243, 243, 243, 0.30)`}}>
+                    <Ui.Container>
                         <Ui.Box pt="3em" pb="3em">
-                        <Ui.Box style={{display: `block`, whiteSpace: `nowrap`, position: `relative`}}>
-                            <Ui.List style={{overflow: `auto`}}>
-                                <Ui.Button color="primary">Iniciar Seción</Ui.Button>
-                                <Ui.Button color="secondary" className="ml-1">Registrate</Ui.Button>
-                            </Ui.List>
-                        </Ui.Box>
                         <Ui.Grid container spacing={3} justify="center">
                             <Login/>
                             <Register/>

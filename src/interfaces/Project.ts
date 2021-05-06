@@ -1,12 +1,11 @@
-export interface Tecnology {
+export interface Project {
     _id?: string;
-    name: string;
-    es_resume: string;
+    es_name: string;
+    en_name: string;
     es_description: string;
-    en_resume: string;
     en_description: string;
-    url: string;
-    urlImage: string;
+    tecnologies: any;
+    imgUrls: string;
     createdAt?: string | Date;
     updatedAt?: string | Date;
 }

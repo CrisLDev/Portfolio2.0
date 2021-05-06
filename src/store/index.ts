@@ -8,10 +8,13 @@ import themeReducer from './reducers/themeReducer';
 
 import tecnologyReducer from './reducers/tecnologyReducer';
 
+import projectReducer from './reducers/projectReducer';
+
 const rootReducer = combineReducers({
     auth: authReducer,
     theme: themeReducer,
-    tecnology: tecnologyReducer
+    tecnology: tecnologyReducer,
+    project: projectReducer
 });
 
 const store = createStore(

@@ -5,12 +5,14 @@ import Tecnology, {ITecnology} from '../models/Tecnology';
 //@desc     Create new tecnology
 //@access   Public
 export const createTecnology: RequestHandler = async (req, res) => {
-    const {name, resume, description, url, urlImage} = req.body;
+    const {name, es_resume, es_description, en_resume, en_description, url, urlImage} = req.body;
     try {
         const tecnology: ITecnology = new Tecnology({
             name,
-            resume,
-            description,
+            es_resume,
+            es_description,
+            en_resume,
+            en_description,
             url,
             urlImage
         });
@@ -51,12 +53,14 @@ export const getTecnology: RequestHandler = async (req, res) => {
 //@desc     Update tecnology by id
 //@access   Private
 export const editTecnology: RequestHandler = async (req, res) => {
-    const {name, resume, description, url, urlImage} = req.body;
+    const {name, es_resume, es_description, en_resume, en_description, url, urlImage} = req.body;
     try {
         const tecnologyDataToUpdate = ({
             name,
-            resume,
-            description,
+            es_resume,
+            es_description,
+            en_resume,
+            en_description,
             url,
             urlImage
         });

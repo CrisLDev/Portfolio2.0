@@ -5,10 +5,13 @@ import TecnologyItem from '../Tecnology/TecnologyItem';
 import {getTecnologies} from '../../store/actions/tecnologiesAction';
 import { Tecnology } from '../../interfaces/Tecnology';
 import { RootState } from '../../store';
+import { getProjects } from '../../store/actions/projectsAction';
 
 const Home = () => {
 
     const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
+
+    const projects = useSelector((state: RootState) => state.project.projects);
 
     const dispatch = useDispatch();
 
@@ -16,7 +19,11 @@ const Home = () => {
         if(tecnologies.length <= 0){
             dispatch(getTecnologies());
         }
-    }, [tecnologies.length, dispatch]);
+        if(projects.length <= 0){
+            dispatch(getProjects());
+        }
+        document.title = "Inicio"
+    }, [tecnologies.length, dispatch, projects.length]);
 
     return (
         <Fragment>

@@ -1,18 +1,22 @@
 import {RequestHandler} from 'express';
 import Project, {IProject} from '../models/Project';
 
-//@Route    Post api/project
-//@desc     Create new project
+//@Route    Post api/tecnology
+//@desc     Create new tecnology
 //@access   Public
 export const createProject: RequestHandler = async (req, res) => {
-    const {name, description, tecnologies} = req.body;
+    /*const tecnologiesMapped:Array<String> = [];
+    const tecnologiesToSave = req.body.tecnologies.map((tecnology:string)=> {
+        tecnologiesMapped.push(tecnology.split("+")[0]);
+    });*/
+    const {es_name, en_name, es_description, en_description, imgUrls, tecnologies} = req.body;
+    const urls: [String] = imgUrls.split(", ");
     try {
         const project: IProject = new Project({
-            name,
-            description,
-            tecnologies
+            es_name, en_name, es_description, en_description, imgUrls:urls, tecnologies
         });
         const projectSaved = await project.save();
+        console.log('hola')
         return res.status(201).json({projectSaved});
     } catch (error) {
         return res.status(400).json({error});
@@ -25,9 +29,9 @@ export const createProject: RequestHandler = async (req, res) => {
 export const getProjects: RequestHandler = async (req, res) => {
     try {
         const projects = await Project.find();
-        return res.status(200).json({projects});
+        return res.status(200).json(projects);
     } catch (error) {
-        return res.status(400).json({error});
+        return res.status(400).json({error: "Server error"});
     }
 }
 
@@ -49,12 +53,15 @@ export const getProject: RequestHandler = async (req, res) => {
 //@desc     Update project by id
 //@access   Private
 export const editProject: RequestHandler = async (req, res) => {
-    const {name, description, tecnologies} = req.body;
+    const {es_name, en_name, es_description ,en_description, tecnologies, imgUrls,} = req.body;
     try {
         const projectDataToUpdate = ({
-            name,
-            description,
-            tecnologies
+            es_name,
+            en_name,
+            es_description,
+            en_description,
+            tecnologies,
+            imgUrls,
         });
         const projectUpdated = await Project.findByIdAndUpdate(req.params.id, projectDataToUpdate, {new: true});
         return res.status(201).json({projectUpdated});

@@ -6,12 +6,22 @@ const tecnologySchema = new Schema({
         required:true,
         trim: true
     },
-    resume: {
+    es_resume: {
         type: String,
         required:true,
         trim: true
     },
-    description: {
+    en_resume: {
+        type: String,
+        required:true,
+        trim: true
+    },
+    es_description: {
+        type: String,
+        required:true,
+        trim: true
+    },
+    en_description: {
         type: String,
         required:true,
         trim: true
@@ -30,9 +40,11 @@ const tecnologySchema = new Schema({
 
 export interface ITecnology extends Document{
     name: string;
-    description: string;
+    es_resume: string;
+    en_resume: string;
+    es_description: string;
+    en_description: string;
     url: string;
     urlImage: string;
 }
-
 export default model<ITecnology>('Tecnology', tecnologySchema);

@@ -33,41 +33,43 @@ const Dashboard = (props:any) => {
     const loadUser = async () => {
         setUser(props.user);
     }
-
+*/
     useEffect(() => {
-        loadUser()
-    }, []);*/
+        document.title = "Dashboard"
+    }, []);
 
     return (
         <Fragment>
             <Ui.Fade in>
-                <Ui.Container>
+                <Ui.Container style={{marginTop: `9em`}}>
                     <Ui.Grid container spacing={3} justify="center">
                         <Ui.Grid item xs={12} sm={12} md={12} lg={4} xl={4}>
-                            <Ui.Box mt="8em">
+                            <Ui.Box>
                                 <UserCard user={props.user} />
                             </Ui.Box>
                         </Ui.Grid>
-                        <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                            <Ui.Grid container spacing={3} justify="center">
-                                <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                    <Ui.Paper elevation={3}>
-                                        <Ui.Box className="d-flex justify-content-between" paddingLeft="1em" paddingRight="1em" paddingTop="1em" paddingBottom="1em">
-                                            <Ui.Typography variant="h6" className="text-uppercase m-0">
-                                                Tecnologias
-                                            </Ui.Typography>
-                                            <Link to="/tecnologies/create">
-                                                <Ui.Button variant="contained" color="primary">
-                                                    Crear
-                                                </Ui.Button>
-                                            </Link>
-                                        </Ui.Box>
-                                    </Ui.Paper>
+                        <Ui.Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+                            <Ui.Box style={{overflowX:`hidden`}} height="100%">
+                                <Ui.Grid container spacing={3}>
+                                    <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                        <Ui.Paper elevation={3}>
+                                            <Ui.Box className="d-flex justify-content-between" paddingLeft="1em" paddingRight="1em" paddingTop="1em" paddingBottom="1em">
+                                                <Ui.Typography variant="h6" className="text-uppercase m-0">
+                                                    Tecnologias
+                                                </Ui.Typography>
+                                                <Link to="/tecnologies/create">
+                                                    <Ui.Button variant="contained" color="primary">
+                                                        Crear
+                                                    </Ui.Button>
+                                                </Link>
+                                            </Ui.Box>
+                                        </Ui.Paper>
+                                    </Ui.Grid>
+                                    {tecnologies.map((tecnology: Tecnology) => {
+                                        return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                                    })}
                                 </Ui.Grid>
-                                {tecnologies.map((tecnology: Tecnology) => {
-                                    return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
-                                })}
-                            </Ui.Grid>
+                            </Ui.Box>
                         </Ui.Grid>
                     </Ui.Grid>
                 </Ui.Container>

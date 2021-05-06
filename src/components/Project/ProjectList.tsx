@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Tecnology } from '../../interfaces/Tecnology';
-import * as tecnologyService from '../../services/TecnologyService';
-import TecnologyItem from './TecnologyItem';
+import ProjectItem from './ProjectItem';
 import * as Ui from '../../shared/Shared';
 import {Link} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { getProjects } from '../../store/actions/projectsAction';
+import { Project } from '../../interfaces/Project';
 
 const useStyles = Ui.makeStyles({
     fixedAddButton: {
@@ -17,26 +19,19 @@ const TecnologyList = () => {
 
     const classes = useStyles();
 
-    const [tecnologies, setTecnologies] = useState<Tecnology[]>([]);
-    
-    const loadTecnologies = async () => {
-        const res = await tecnologyService.getTecnologies();
-        //Whith this code we can formated tecnologies for the last tecnology apeart in first place
-        /*const formatedTecnologies = res.data.map(tecnology => {
-            return {
-                ...tecnology,
-                createdAt: tecnology.createdAt ? new Date(tecnology.createdAt): new Date(),
-                updatedAt: tecnology.updatedAt ? new Date(tecnology.updatedAt): new Date(),
-            }
-        })
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());*/
-        setTecnologies(res.data);
-    }
+    const [projects, setProjects] = useState<Project[]>([]);
 
+    const projectsInStore = useSelector((state: RootState) => state.project.projects);
+
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        loadTecnologies();
+        if(projectsInStore.length <= 0){
+            dispatch(getProjects());
+        }
+        setProjects(projectsInStore);
         document.title = "Tecnologías"
-    }, []);
+    }, [projectsInStore.length, dispatch, setProjects, projectsInStore]);
 
     return (
         <Ui.Fade in>
@@ -46,7 +41,7 @@ const TecnologyList = () => {
                         <Ui.Grid container spacing={3} justify="center">
                             <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12} className="text-center">
                                 <Ui.Typography variant="h4" component="h4" gutterBottom>
-                                    Estas son las tecnologías con las que he trabajado.
+                                    Listado de proyectos.
                                 </Ui.Typography>
                             </Ui.Grid>
                         </Ui.Grid>
@@ -55,11 +50,11 @@ const TecnologyList = () => {
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
                         <Ui.Grid container spacing={3} justify="center">
-                            {tecnologies.map((tecnology) => {
-                                return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                            {projects.map((project) => {
+                                return <ProjectItem project={project} key={project._id} />
                             })}
                         </Ui.Grid>
-                        <Link to="/tecnologies/create">
+                        <Link to="/projects/create">
                             <Ui.Fab color="primary" variant="extended" className={classes.fixedAddButton}>
                                 <Ui.Add />
                                 Nuevo

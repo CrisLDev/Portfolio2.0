@@ -197,3 +197,7 @@ button:focus {
 		padding: .5rem 0.2rem!important;
 	}
 }
+
+.MuiSelect-select:focus{
+	background: none!important;
+}
