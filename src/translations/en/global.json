@@ -8,6 +8,13 @@
         "Edit-Project": "Edit Project",
         "Tecnologies": "Tecnologies",
         "Create-Tecnology": "Create Tecnology",
-        "Edit-Tecnology": "Edit Tecnology"
+        "Edit-Tecnology": "Edit Tecnology",
+        "All": "All",
+        "Web": "Web developments",
+        "Mobile": "Mobile developments"
+    },
+    "Text":{
+        "Hello": "Hello I'm cristhian",
+        "AWeb": "A web developer"
     }
 }

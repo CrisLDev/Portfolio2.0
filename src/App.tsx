@@ -22,6 +22,7 @@ import Dashboard  from './components/Dashboard/Dashboard';
 
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import {CssBaseline} from '@material-ui/core';
+import { toogleLanguage } from './store/actions/languageAction';
 
 const App = () => {
 
@@ -33,12 +34,22 @@ const App = () => {
         }
     })
 
+    if(theme === 'dark'){
+        document.getElementsByTagName("body")[0].classList.replace("lightScrollBar", "darkScrollBar");
+    }
+
     const {loading} = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch();
+
+    const local = async () => {
+        await localStorage.removeItem('language');
+        await localStorage.setItem('language', 'es');
+        await dispatch(toogleLanguage('es'));
+    }
+
     // Check if user is loged
     useEffect(() => {
-        localStorage.removeItem('language');
-        localStorage.setItem('language', 'es');
+        local();
         dispatch(setLoading(true));
         dispatch(loadUser());
     }, [dispatch]);

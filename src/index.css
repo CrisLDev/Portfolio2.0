@@ -49,12 +49,16 @@ button:focus {
   width: 9px;               /* width of the entire scrollbar */
   height: 5px;               /* he of the entire scrollbar */
 }
-::-webkit-scrollbar-track {
+.lightScrollBar::-webkit-scrollbar-track {
   background: #fafafa!important;      /* color of the tracking area */
 }
 ::-webkit-scrollbar-thumb {
   background-color: #0093E9;    /* color of the scroll thumb */
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.darkScrollBar::-webkit-scrollbar-track {
+	background: #212121!important;      /* color of the tracking area */
 }
 /* End Scrollbar */
 

@@ -28,8 +28,10 @@ const Navbar = () => {
 
     const handleChangeTheme = () => {
         if(themeExist === 'dark'){
+            document.getElementsByTagName("body")[0].classList.replace("darkScrollBar", "lightScrollBar");
             dispatch(toogleMode('light'));
         }else{
+            document.getElementsByTagName("body")[0].classList.replace("lightScrollBar", "darkScrollBar");
             dispatch(toogleMode('dark'));
         }
     }
@@ -124,9 +126,7 @@ const Navbar = () => {
                             <Ui.Box className="ml-auto nav-link link-shadow">
                                 <Ui.ListItem button onClick={handleChangeLanguage}>
                                     <Ui.Box>
-                                        <Ui.Typography color="textSecondary">
-                                                {language === 'es' ? <Ui.Button variant="outlined" onClick={() => i18n.changeLanguage("en")}>En</Ui.Button> : <Ui.Button variant="outlined" onClick={() => i18n.changeLanguage("es")}>Es</Ui.Button>}
-                                        </Ui.Typography>
+                                            {language === 'es' ? <Ui.Typography variant="button" color="textPrimary" onClick={() => i18n.changeLanguage("en")}>En</Ui.Typography> : <Ui.Typography variant="button" color="textPrimary" onClick={() => i18n.changeLanguage("es")}>Es</Ui.Typography>}
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Ui.Box>

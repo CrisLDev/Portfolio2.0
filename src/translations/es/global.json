@@ -6,8 +6,15 @@
         "Projects": "Proyectos",
         "Create-Project": "Crear Proyecto",
         "Edit-Project": "Editar Proyecto",
-        "Tecnologies": "Tecnologias",
+        "Tecnologies": "Tecnologías",
         "Create-Tecnology": "Crear Tecnología",
-        "Edit-Tecnology": "Editar Tecnología"
+        "Edit-Tecnology": "Editar Tecnología",
+        "All": "Todos",
+        "Web": "Desarrollos Web",
+        "Mobile": "Desarrollos mobiles"
+    },
+    "Text":{
+        "Hello": "Hola soy cristhian",
+        "AWeb": "un desarrollador web"
     }
 }

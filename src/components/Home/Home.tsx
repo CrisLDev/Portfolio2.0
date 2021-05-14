@@ -53,13 +53,11 @@ const Home = () => {
                                         </Ui.Grid>
                                         <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={2}>
                                             <Ui.Box>
-                                            <h1>{t("Titles.Home")}</h1>
                                                 <Ui.Typography component="h1" variant="h3" className="text-uppercase font-weight-bold">
-                                                    Hola soy Cristhian,
-                                                    
+                                                    {t("Text.Hello")},
                                                 </Ui.Typography>
-                                                <Ui.Typography component="h1" variant="h4" className="text-uppercase font-weight-bold">
-                                                    Un Web Developer.
+                                                <Ui.Typography component="h1" variant="h5" className="text-uppercase font-weight-bold">
+                                                    {t("Text.AWeb")}.
                                                 </Ui.Typography>
                                             </Ui.Box>
                                         </Ui.Grid>
@@ -78,8 +76,8 @@ const Home = () => {
                                         </Ui.Grid>
                                         <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={2} className="d-flex justify-content-center">
                                             <Ui.Box>
-                                                <Ui.Typography component="p" variant="h6" className="text-uppercase font-weight-bold text-justify">
-                                                    Hola soy Cristhian, Un Web Developer.
+                                                <Ui.Typography component="p" variant="h6" className="text-uppercase font-weight-bold text-center">
+                                                    {t("Text.Hello")}, {t("Text.AWeb")}.
                                                 </Ui.Typography>
                                             </Ui.Box>
                                         </Ui.Grid>
@@ -90,7 +88,7 @@ const Home = () => {
                                 <Ui.Grid container spacing={3} justify="center">
                                     <Ui.Grid item xs={9} sm={6} md={12} lg={12} xl={2} className="floating">
                                         <Ui.Box p="1.2em">
-                                            <img loading="lazy" src="https://i.imgur.com/Olx0SLG.jpg" alt="Foto De Perfil" className="rounded-circle img-fluid border" />
+                                            <img loading="lazy" src="./assets/avatar.svg" alt="Foto De Perfil" className="rounded-circle img-fluid border" />
                                         </Ui.Box>
                                         <Ui.Box pb="1em" borderBottom="0.5em solid white" padding="5px">
                                         <Ui.List className="d-flex justify-content-center">
@@ -125,15 +123,15 @@ const Home = () => {
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
                         <Ui.Box>
-                            <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold">
-                                PROYECTOS
+                            <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold text-uppercase">
+                                {t("Titles.Projects")}
                             </Ui.Typography> 
                         </Ui.Box>
                         <Ui.Box style={{display: `block`, whiteSpace: `nowrap`, position: `relative`}} mb="1em">
                             <Ui.List style={{overflow: `auto`}}>
-                                <Ui.Button color="primary">Todos</Ui.Button>
-                                <Ui.Button color="inherit" className="ml-1">Desarrollos Web</Ui.Button>
-                                <Ui.Button color="secondary" className="ml-1">Desarrollos Mobiles</Ui.Button>
+                                <Ui.Button color="primary">{t("Titles.All")}</Ui.Button>
+                                <Ui.Button color="inherit" className="ml-1">{t("Titles.Web")}</Ui.Button>
+                                <Ui.Button color="secondary" className="ml-1">{t("Titles.Mobile")}</Ui.Button>
                             </Ui.List>
                         </Ui.Box>
                         <Ui.Box>
@@ -150,7 +148,7 @@ const Home = () => {
                         <Ui.Box>
                             <Ui.Box pb="3em">
                                 <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold">
-                                        Tecnologías
+                                    {t("Titles.Tecnologies")}
                                 </Ui.Typography> 
                             </Ui.Box>
                         </Ui.Box>

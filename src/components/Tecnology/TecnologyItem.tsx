@@ -4,7 +4,8 @@ import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
 import {useHistory} from 'react-router';
 import { deleteTecnology } from '../../store/actions/tecnologiesAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 interface Props{
     tecnology: Tecnology
@@ -24,6 +25,8 @@ const TecnologyItem = ({tecnology}: Props) => {
     const dispatch = useDispatch();
 
     const history = useHistory();
+
+    const { language } = useSelector((state: RootState) => state.language);
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -73,7 +76,7 @@ const TecnologyItem = ({tecnology}: Props) => {
                 </Ui.Menu>
                <Ui.CardContent>
                    <Ui.Typography variant="body2" color="textSecondary" component="p" style={{overflow: `hidden`, textOverflow:`ellipsis`, display: `-webkit-box`, WebkitLineClamp: 3, WebkitBoxOrient: `vertical`}}>
-                        {tecnology.es_resume}
+                        {language === 'es' ? tecnology.es_resume : tecnology.en_resume }
                    </Ui.Typography>
                </Ui.CardContent>
                <Ui.CardActions disableSpacing>
@@ -91,7 +94,7 @@ const TecnologyItem = ({tecnology}: Props) => {
                 <Ui.DialogTitle id="alert-dialog-title">{tecnology.name}</Ui.DialogTitle>
                 <Ui.DialogContent>
                 <Ui.DialogContentText id="alert-dialog-description" style={{whiteSpace: `pre-line`}}>
-                    {tecnology.es_description}
+                    {language === 'es' ? tecnology.es_description : tecnology.en_description}
                 </Ui.DialogContentText>
                 </Ui.DialogContent>
                 <Ui.DialogActions>
