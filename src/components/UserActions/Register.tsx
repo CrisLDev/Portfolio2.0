@@ -79,7 +79,7 @@ const Register = () => {
                                     <Ui.TextField 
                                     name="fullname" 
                                     label="Nombre Completo" 
-                                    variant="outlined"
+                                    variant="filled"
                                     placeholder="Ingresa un nombre completo" 
                                     fullWidth 
                                     margin="normal"
@@ -88,7 +88,7 @@ const Register = () => {
                                     <Ui.TextField 
                                     name="username" 
                                     label="Nombre de Usuario" 
-                                    variant="outlined" 
+                                    variant="filled" 
                                     placeholder="Ingresa tu nombre de usuario" 
                                     fullWidth 
                                     margin="normal"
@@ -97,17 +97,17 @@ const Register = () => {
                                     <Ui.TextField 
                                     name="email" 
                                     label="Email de Usuario" 
-                                    variant="outlined" 
+                                    variant="filled" 
                                     placeholder="Ingresa tu email" 
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange}>
                                     </Ui.TextField>
                                     <Ui.Box mb="1.5em" mt="1em">
-                                    <Ui.FormControl variant="outlined" fullWidth>
-                                    <Ui.InputLabel htmlFor="outlined-adornment-password">Contraseña</Ui.InputLabel>
-                                    <Ui.OutlinedInput
-                                        id="outlined-adornment-password"
+                                    <Ui.FormControl variant="filled" fullWidth>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password">Contraseña</Ui.InputLabel>
+                                    <Ui.FilledInput
+                                        id="filled-adornment-password"
                                         type={user.showPassword ? 'text' : 'password'}
                                         value={user.password}
                                         name="password"
@@ -124,15 +124,14 @@ const Register = () => {
                                             </Ui.IconButton>
                                         </Ui.InputAdornment>
                                         }
-                                        labelWidth={80}
                                     />
                                     </Ui.FormControl>
                                     </Ui.Box>
                                     <Ui.Box mb="1em">
-                                    <Ui.FormControl variant="outlined" fullWidth>
-                                    <Ui.InputLabel htmlFor="outlined-adornment-password2">Confirma tu Contraseña</Ui.InputLabel>
-                                    <Ui.OutlinedInput
-                                        id="outlined-adornment-password2"
+                                    <Ui.FormControl variant="filled" fullWidth>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password2">Confirma tu Contraseña</Ui.InputLabel>
+                                    <Ui.FilledInput
+                                        id="filled-adornment-password2"
                                         type={user.showPassword2 ? 'text' : 'password'}
                                         value={user.password2}
                                         name="password2"
@@ -149,7 +148,6 @@ const Register = () => {
                                             </Ui.IconButton>
                                         </Ui.InputAdornment>
                                         }
-                                        labelWidth={170}
                                     />
                                     </Ui.FormControl>
                                     </Ui.Box>

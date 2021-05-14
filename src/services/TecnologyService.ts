@@ -18,3 +18,7 @@ export const createTecnology = async (tecnology: Tecnology, config: any) => {
 export const editTecnology = async (id: string, tecnology: Tecnology, config: any) => {
     return await axios.put(`${API}/${id}`, tecnology, config);
 }
+
+export const deleteTecnology = async (id: string | undefined) => {
+    return await axios.delete(`${API}/${id}`)
+}

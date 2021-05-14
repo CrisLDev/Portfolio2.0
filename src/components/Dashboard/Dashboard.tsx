@@ -7,6 +7,7 @@ import { RootState } from '../../store';
 import { Tecnology } from '../../interfaces/Tecnology';
 import {getTecnologies} from '../../store/actions/tecnologiesAction';
 import { Link } from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
 
 const mapStateToProps = (state: any) => {
     return {
@@ -16,10 +17,11 @@ const mapStateToProps = (state: any) => {
 
 const Dashboard = (props:any) => {
 
+    const [t, i18n] = useTranslation("global");
+
     const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
 
     const dispatch = useDispatch();
-
     
     useEffect(() => {
         if(tecnologies.length <= 0){
@@ -35,7 +37,7 @@ const Dashboard = (props:any) => {
     }
 */
     useEffect(() => {
-        document.title = "Dashboard"
+        document.title = t("Titles.Dashboard")
     }, []);
 
     return (

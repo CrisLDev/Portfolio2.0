@@ -59,17 +59,17 @@ const Login = () => {
                                     <Ui.TextField 
                                     name="email" 
                                     label="Email de Usuario" 
-                                    variant="outlined" 
+                                    variant="filled" 
                                     autoFocus
                                     placeholder="Ingresa tu email" 
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange}>
                                     </Ui.TextField>
-                                    <Ui.FormControl variant="outlined" fullWidth>
-                                    <Ui.InputLabel htmlFor="outlined-adornment-password">Contraseña</Ui.InputLabel>
-                                    <Ui.OutlinedInput
-                                        id="outlined-adornment-password"
+                                    <Ui.FormControl variant="filled" fullWidth>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password">Contraseña</Ui.InputLabel>
+                                    <Ui.FilledInput
+                                        id="filled-adornment-password"
                                         type={user.showPassword ? 'text' : 'password'}
                                         value={user.password}
                                         onChange={handleChange('password')}
@@ -86,7 +86,6 @@ const Login = () => {
                                             </Ui.IconButton>
                                         </Ui.InputAdornment>
                                         }
-                                        labelWidth={80}
                                     />
                                     </Ui.FormControl>
                                     <Ui.Box mt="0.5em">

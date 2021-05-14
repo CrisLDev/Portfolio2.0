@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from '../../store';
 import { logout } from '../../store/actions/authAction';
 import { toogleMode } from '../../store/actions/themeAction';
+import { toogleLanguage } from '../../store/actions/languageAction';
+import {useTranslation} from 'react-i18next';
 
 const Navbar = () => {
 
@@ -16,13 +18,27 @@ const Navbar = () => {
 
     const { theme } = useSelector((state: RootState) => state.theme);
 
+    const [t, i18n] = useTranslation("global");
+
+    const { language } = useSelector((state: RootState) => state.language);
+
     const themeExist = localStorage.getItem('theme');
+
+    const languageExist = localStorage.getItem('language');
 
     const handleChangeTheme = () => {
         if(themeExist === 'dark'){
             dispatch(toogleMode('light'));
         }else{
             dispatch(toogleMode('dark'));
+        }
+    }
+
+    const handleChangeLanguage = () => {
+        if(languageExist === 'es'){
+            dispatch(toogleLanguage('en'));
+        }else{
+            dispatch(toogleLanguage('es'));
         }
     }
 
@@ -101,6 +117,15 @@ const Navbar = () => {
                                     <Ui.Box>
                                         <Ui.Typography color="textSecondary">
                                                 {theme === 'light' ? <Ui.Brightness4 /> : <Ui.Brightness7 />}
+                                        </Ui.Typography>
+                                    </Ui.Box>
+                                </Ui.ListItem>
+                            </Ui.Box>
+                            <Ui.Box className="ml-auto nav-link link-shadow">
+                                <Ui.ListItem button onClick={handleChangeLanguage}>
+                                    <Ui.Box>
+                                        <Ui.Typography color="textSecondary">
+                                                {language === 'es' ? <Ui.Button variant="outlined" onClick={() => i18n.changeLanguage("en")}>En</Ui.Button> : <Ui.Button variant="outlined" onClick={() => i18n.changeLanguage("es")}>Es</Ui.Button>}
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>

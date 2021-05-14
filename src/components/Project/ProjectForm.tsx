@@ -16,6 +16,24 @@ interface Params {
     id: string;
 }
 
+/* 
+// This code return a placeholder for the multi select
+renderValue={(selected) => {
+                                        if((selected as string[]).length === 0 && document.getElementById("tecnologiesLabel")?.className.includes('MuiInputLabel-shrink')){
+                                            return <span style={{color: `rgba(255, 255, 255, 0.7)`}}>Escoja algunas tecnologías</span>
+                                        }
+                                        return <div className={classes.chips}>
+                                                    {
+                                                        (selected as string[]).map((value) => (
+                                                            
+                                                            <Ui.Chip key={getTecnologyNameForLabel(value)} label={getTecnologyNameForLabel(value)} className={classes.chip} />
+                                                        ))
+                                                    }
+                                                </div>
+                                    }}
+
+*/
+
 const useStyles = Ui.makeStyles((theme: Theme) => 
         Ui.createStyles({
             chips:{
@@ -164,8 +182,8 @@ const ProjectForm = () => {
                             <form noValidate autoComplete="off" style={{width: `100%`}} onSubmit={handleSubmit}>
                                 <Ui.TextField 
                                 name="es_name" 
-                                label="Es Nombre" 
-                                variant="outlined" 
+                                label="Nombre en español" 
+                                variant="filled" 
                                 autoFocus 
                                 placeholder="Ingresa un nombre" 
                                 fullWidth 
@@ -175,8 +193,8 @@ const ProjectForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="en_name" 
-                                label="En Nombre" 
-                                variant="outlined" 
+                                label="Nombre en ingles" 
+                                variant="filled" 
                                 placeholder="Ingresa un nombre" 
                                 fullWidth 
                                 margin="normal"
@@ -185,8 +203,8 @@ const ProjectForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="es_description" 
-                                label="Es Descripción" 
-                                variant="outlined" 
+                                label="Descripción en español" 
+                                variant="filled" 
                                 placeholder="Ingresa una descripción" 
                                 multiline 
                                 rowsMax={4} 
@@ -196,8 +214,8 @@ const ProjectForm = () => {
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="en_description" 
-                                label="En Descripción" 
-                                variant="outlined" 
+                                label="Descripción en ingles" 
+                                variant="filled" 
                                 placeholder="Ingresa una descripción" 
                                 multiline 
                                 rowsMax={4} 
@@ -205,7 +223,7 @@ const ProjectForm = () => {
                                 margin="normal"
                                 value={en_description}
                                 onChange={handleInputChange}></Ui.TextField>
-                                <Ui.FormControl variant="outlined" fullWidth className="noFocus mt-3 mb-2">
+                                <Ui.FormControl variant="filled" fullWidth className="noFocus mt-3 mb-2">
                                     <Ui.InputLabel id="tecnologiesLabel">Tecnologias</Ui.InputLabel>
                                     <Ui.Select 
                                     name="tecnologies" 
@@ -219,16 +237,13 @@ const ProjectForm = () => {
                                         <div className={classes.chips}>
                                             {
                                                 (selected as string[]).map((value) => (
-                                                    
+                                                            
                                                     <Ui.Chip key={getTecnologyNameForLabel(value)} label={getTecnologyNameForLabel(value)} className={classes.chip} />
                                                 ))
                                             }
                                         </div>
                                     )}
                                     MenuProps={MenuProps}>
-                                        <Ui.MenuItem value="">
-                                            <em>None</em>
-                                        </Ui.MenuItem>
                                         {tecnologies.map((tecnology: Tecnology) => (
                                             <Ui.MenuItem key={tecnology._id} value={tecnology._id} style={getStyles(tecnology.name, tecnologyName, theme)}>
                                                 {tecnology.name}
@@ -239,7 +254,7 @@ const ProjectForm = () => {
                                 <Ui.TextField 
                                 name="imgUrls" 
                                 label="Urls de las Imagenes" 
-                                variant="outlined" 
+                                variant="filled" 
                                 placeholder="Ingresa la url de la imagen" 
                                 fullWidth 
                                 margin="normal"

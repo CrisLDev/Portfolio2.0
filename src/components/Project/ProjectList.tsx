@@ -21,17 +21,15 @@ const TecnologyList = () => {
 
     const [projects, setProjects] = useState<Project[]>([]);
 
-    const projectsInStore = useSelector((state: RootState) => state.project.projects);
-
     const dispatch = useDispatch();
+
+    const projectsInStore = useSelector((state: RootState) => state.project.projects);
     
     useEffect(() => {
-        if(projectsInStore.length <= 0){
-            dispatch(getProjects());
-        }
+        dispatch(getProjects());
         setProjects(projectsInStore);
         document.title = "Tecnologías"
-    }, [projectsInStore.length, dispatch, setProjects, projectsInStore]);
+    }, [projectsInStore.length, dispatch, setProjects]);
 
     return (
         <Ui.Fade in>

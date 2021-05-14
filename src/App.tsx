@@ -37,6 +37,8 @@ const App = () => {
     const dispatch = useDispatch();
     // Check if user is loged
     useEffect(() => {
+        localStorage.removeItem('language');
+        localStorage.setItem('language', 'es');
         dispatch(setLoading(true));
         dispatch(loadUser());
     }, [dispatch]);

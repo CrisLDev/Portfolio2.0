@@ -18,3 +18,7 @@ export const createProject = async (project: Project, config: any) => {
 export const editProject = async (id: string, project: Project, config: any) => {
     return await axios.put(`${API}/${id}`, project, config);
 }
+
+export const deleteProject = async (id: string | undefined) => {
+    return await axios.delete(`${API}/${id}`)
+}

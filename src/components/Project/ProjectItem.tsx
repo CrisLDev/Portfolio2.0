@@ -3,6 +3,8 @@ import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
 import {useHistory} from 'react-router';
 import { Project } from '../../interfaces/Project';
+import { useDispatch } from 'react-redux';
+import { deleteProject } from '../../store/actions/projectsAction';
 
 interface Props{
     project: Project
@@ -18,6 +20,8 @@ Ui.createStyles({
 );
 
 const ProjectItem = ({project}: Props) => {
+
+    const dispatch = useDispatch();
 
     const history = useHistory();
 
@@ -49,7 +53,7 @@ const ProjectItem = ({project}: Props) => {
     };
 
     const handleCloseDelete = () => {
-        history.push(`/update/${project._id}`);
+        dispatch(deleteProject(project._id));
         setOpen(false);
     };
 

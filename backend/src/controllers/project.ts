@@ -76,7 +76,7 @@ export const editProject: RequestHandler = async (req, res) => {
 //@access   Private
 export const deleteProject: RequestHandler = async (req, res) => {
     try {
-        const projectDeleted = await Project.findById(req.params.id);
+        const projectDeleted = await Project.findByIdAndDelete(req.params.id);
         return res.status(200).json({projectDeleted});
     } catch (error) {
         return res.status(400).json({error});

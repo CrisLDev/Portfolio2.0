@@ -1,4 +1,4 @@
-import {SET_LOADING_PROJECTS, SET_PROJECTS, ProjectState, SET_PROJECT, SET_EDIT_PROJECT_SUCCESS} from '../types';
+import {SET_LOADING_PROJECTS, SET_PROJECTS, ProjectState, SET_PROJECT, SET_EDIT_PROJECT_SUCCESS, SET_DELETE_PROJECT_SUCCESS} from '../types';
 
 const initialState: ProjectState = {
     projects: [],
@@ -33,6 +33,12 @@ export default function reducer(state = initialState, action: any){
             return {
                 ...state,
                 loading: payload
+            }
+        case SET_DELETE_PROJECT_SUCCESS:
+            const filteredProjects = state.projects?.filter(project => project._id !== payload.projectDeleted._id);
+            return {
+                ...state,
+                projects: filteredProjects
             }
         default:
             return state;

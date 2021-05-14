@@ -102,7 +102,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="name" 
                                 label="Nombre" 
-                                variant="outlined" 
+                                variant="filled" 
                                 autoFocus 
                                 placeholder="Ingresa un nombre" 
                                 fullWidth 
@@ -113,7 +113,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="es_resume" 
                                 label="Es Resumen" 
-                                variant="outlined"
+                                variant="filled"
                                 placeholder="Ingresa un pequeño resumen" 
                                 multiline 
                                 rowsMax={4}
@@ -125,7 +125,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="es_description" 
                                 label="Es Descripción" 
-                                variant="outlined" 
+                                variant="filled" 
                                 placeholder="Ingresa una descripción" 
                                 multiline 
                                 rowsMax={4} 
@@ -136,7 +136,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="en_resume" 
                                 label="En Resumen" 
-                                variant="outlined"
+                                variant="filled"
                                 placeholder="Ingresa un pequeño resumen" 
                                 multiline 
                                 rowsMax={4}
@@ -148,7 +148,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="en_description" 
                                 label="En Descripción" 
-                                variant="outlined" 
+                                variant="filled" 
                                 placeholder="Ingresa una descripción" 
                                 multiline 
                                 rowsMax={4} 
@@ -159,7 +159,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="url" 
                                 label="Url" 
-                                variant="outlined" 
+                                variant="filled" 
                                 placeholder="Ingresa la Url principal" 
                                 fullWidth 
                                 margin="normal"
@@ -168,7 +168,7 @@ const TecnologyForm = () => {
                                 <Ui.TextField 
                                 name="urlImage" 
                                 label="Url de la Imagen" 
-                                variant="outlined" 
+                                variant="filled" 
                                 placeholder="Ingresa la url de la imagen" 
                                 fullWidth 
                                 margin="normal"

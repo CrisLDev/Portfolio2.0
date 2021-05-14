@@ -101,6 +101,21 @@ interface setThemeAction{
 
 export type ThemeAction = setThemeAction;
 
+// Lenguage
+export const LANGUAGE_MODE = 'LANGUAGE_MODE';
+
+export interface LanguageState {
+    language: string | null;
+}
+
+// Actions
+interface setLanguageAction{
+    type: typeof LANGUAGE_MODE;
+    payload: string;
+}
+
+export type LanguageAction = setLanguageAction;
+
 
 // Tecnologies
 export const SET_TECNOLOGIES = 'SET_TECNOLOGIES';
@@ -120,6 +135,10 @@ export const SET_EDIT_TECNOLOGY_SUCCESS = 'SET_EDIT_TECNOLOGY_SUCCESS';
 export const SET_EDIT_TECNOLOGY_FAIL = 'SET_EDIT_TECNOLOGY_FAIL';
 
 export const SET_REGISTER_TECNOLOGY_FAIL = 'SET_REGISTER_FAIL_TECNOLOGY';
+
+export const SET_DELETE_TECNOLOGY_SUCCESS = 'SET_DELETE_TECNOLOGY_SUCCESS';
+
+export const SET_DELETE_TECNOLOGY_FAIL = 'SET_DELETE_TECNOLOGY_FAIL';
 
 export interface TecnologyState {
     tecnologies: Tecnology[] | null;
@@ -169,7 +188,16 @@ interface setLoadingTecnologyAction{
     payload: boolean;
 }
 
-export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction | setRegisterTecnologySuccessAction | setTecnologyAction | setGetTecnologyFailAction | setEditTecnologySuccessAction | setEditTecnologyFailAction;
+interface setDeleteTecnologySuccessAction{
+    type: typeof SET_DELETE_TECNOLOGY_SUCCESS;
+    payload: Project; 
+}
+
+interface setDeleteTecnologyFailAction{
+    type: typeof SET_DELETE_TECNOLOGY_FAIL;
+}
+
+export type TecnologiesAction = setTecnologiesAction | SetErrorAction | SetSuccessAction | setLoadingTecnologyAction | setRegisterTecnologyFailAction | setGetTecnologiesFailAction | setRegisterTecnologySuccessAction | setTecnologyAction | setGetTecnologyFailAction | setEditTecnologySuccessAction | setEditTecnologyFailAction | setDeleteTecnologySuccessAction | setDeleteTecnologyFailAction;
 
 // Projects
 export const SET_PROJECTS = 'SET_PROJECTS';
@@ -189,6 +217,10 @@ export const SET_EDIT_PROJECT_SUCCESS = 'SET_EDIT_PROJECT_SUCCESS';
 export const SET_EDIT_PROJECT_FAIL = 'SET_EDIT_PROJECT_FAIL';
 
 export const SET_REGISTER_PROJECT_FAIL = 'SET_REGISTER_PROJECT_FAIL';
+
+export const SET_DELETE_PROJECT_SUCCESS = 'SET_DELETE_PROJECT_SUCCESS';
+
+export const SET_DELETE_PROJECT_FAIL = 'SET_DELETE_PROJECT_FAIL';
 
 export interface ProjectState {
     projects: Project[] | null;
@@ -238,4 +270,13 @@ interface setLoadingProjectAction{
     payload: boolean;
 }
 
-export type ProjectsAction = setProjectsAction | SetErrorAction | SetSuccessAction | setLoadingProjectAction | setRegisterProjectFailAction | setGetProjectsFailAction | setRegisterProjectSuccessAction | setProjectAction | setGetProjectFailAction | setEditProjectSuccessAction | setEditProjectFailAction;
+interface setDeleteProjectSuccessAction{
+    type: typeof SET_DELETE_PROJECT_SUCCESS;
+    payload: Project; 
+}
+
+interface setDeleteProjectFailAction{
+    type: typeof SET_DELETE_PROJECT_FAIL;
+}
+
+export type ProjectsAction = setProjectsAction | SetErrorAction | SetSuccessAction | setLoadingProjectAction | setRegisterProjectFailAction | setGetProjectsFailAction | setRegisterProjectSuccessAction | setProjectAction | setGetProjectFailAction | setEditProjectSuccessAction | setEditProjectFailAction | setDeleteProjectSuccessAction | setDeleteProjectFailAction;

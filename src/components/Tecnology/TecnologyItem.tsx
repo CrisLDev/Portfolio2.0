@@ -3,6 +3,8 @@ import { Tecnology } from '../../interfaces/Tecnology';
 import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
 import {useHistory} from 'react-router';
+import { deleteTecnology } from '../../store/actions/tecnologiesAction';
+import { useDispatch } from 'react-redux';
 
 interface Props{
     tecnology: Tecnology
@@ -18,6 +20,8 @@ Ui.createStyles({
 );
 
 const TecnologyItem = ({tecnology}: Props) => {
+
+    const dispatch = useDispatch();
 
     const history = useHistory();
 
@@ -49,7 +53,7 @@ const TecnologyItem = ({tecnology}: Props) => {
     };
 
     const handleCloseDelete = () => {
-        history.push(`/update/${tecnology._id}`);
+        dispatch(deleteTecnology(tecnology._id));
         setOpen(false);
     };
 

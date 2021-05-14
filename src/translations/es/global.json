@@ -1,0 +1,13 @@
+{
+    "Titles":{
+        "Home": "Inicio",
+        "LoginOrRegister": "Inicia Sesió o Registrate",
+        "Dashboard": "Dashboard",
+        "Projects": "Proyectos",
+        "Create-Project": "Crear Proyecto",
+        "Edit-Project": "Editar Proyecto",
+        "Tecnologies": "Tecnologias",
+        "Create-Tecnology": "Crear Tecnología",
+        "Edit-Tecnology": "Editar Tecnología"
+    }
+}

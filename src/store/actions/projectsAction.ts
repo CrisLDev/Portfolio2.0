@@ -1,6 +1,6 @@
 import {ThunkAction} from 'redux-thunk';
 
-import {SET_PROJECTS, SET_REGISTER_PROJECT_FAIL, ProjectsAction, SET_GET_PROJECTS_FAIL, SET_LOADING_PROJECTS, SET_REGISTER_PROJECT_SUCCESS, SET_PROJECT, SET_GET_PROJECT_FAIL, SET_EDIT_PROJECT_SUCCESS, SET_EDIT_PROJECT_FAIL} from '../types';
+import {SET_PROJECTS, SET_REGISTER_PROJECT_FAIL, ProjectsAction, SET_GET_PROJECTS_FAIL, SET_LOADING_PROJECTS, SET_REGISTER_PROJECT_SUCCESS, SET_PROJECT, SET_GET_PROJECT_FAIL, SET_EDIT_PROJECT_SUCCESS, SET_EDIT_PROJECT_FAIL, SET_DELETE_PROJECT_SUCCESS, SET_DELETE_PROJECT_FAIL} from '../types';
 
 import {setError, setSuccess} from './authAction';
 
@@ -128,6 +128,29 @@ export const editProject = (id: string, data: Project): ThunkAction<void, RootSt
             });
         }
 
+    }
+}
+
+// Delete Project
+export const deleteProject = (id: string | undefined): ThunkAction<void, RootState, null, ProjectsAction> => {
+    return async dispatch => {
+        try {
+            dispatch(setLoading(true));
+            const res = await projectService.deleteProject(id);
+            dispatch({
+                type: SET_DELETE_PROJECT_SUCCESS,
+                payload: res.data
+            })
+            dispatch(setSuccess('Project Deleted successfully'));
+            toast.success('Proyecto eliminado correctamente');
+            return dispatch(setLoading(false));
+        } catch (err) {
+            const errors = err.response.data.errors;
+            dispatch(setError(errors[0].msg));
+            dispatch({
+                type: SET_DELETE_PROJECT_FAIL
+            });
+        }
     }
 }
 

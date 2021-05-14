@@ -1,4 +1,5 @@
 import {RequestHandler} from 'express';
+import Project from '../models/Project';
 import Tecnology, {ITecnology} from '../models/Tecnology';
 
 //@Route    Post api/tecnology
@@ -77,7 +78,8 @@ export const editTecnology: RequestHandler = async (req, res) => {
 //@access   Private
 export const deleteTecnology: RequestHandler = async (req, res) => {
     try {
-        const tecnologyDeleted = await Tecnology.findById(req.params.id);
+        const tecnologyDeleted = await Tecnology.findByIdAndDelete(req.params.id);
+        const projectDeleted = await Project.deleteMany({'tecnologies': {$elemMatch: {$in: req.params.id}}});
         return res.status(200).json({tecnologyDeleted});
     } catch (error) {
         return res.status(400).json({error});

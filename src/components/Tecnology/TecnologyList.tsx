@@ -4,6 +4,9 @@ import * as tecnologyService from '../../services/TecnologyService';
 import TecnologyItem from './TecnologyItem';
 import * as Ui from '../../shared/Shared';
 import {Link} from 'react-router-dom';
+import { getTecnologies } from '../../store/actions/tecnologiesAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 const useStyles = Ui.makeStyles({
     fixedAddButton: {
@@ -18,25 +21,16 @@ const TecnologyList = () => {
     const classes = useStyles();
 
     const [tecnologies, setTecnologies] = useState<Tecnology[]>([]);
-    
-    const loadTecnologies = async () => {
-        const res = await tecnologyService.getTecnologies();
-        //Whith this code we can formated tecnologies for the last tecnology apeart in first place
-        /*const formatedTecnologies = res.data.map(tecnology => {
-            return {
-                ...tecnology,
-                createdAt: tecnology.createdAt ? new Date(tecnology.createdAt): new Date(),
-                updatedAt: tecnology.updatedAt ? new Date(tecnology.updatedAt): new Date(),
-            }
-        })
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());*/
-        setTecnologies(res.data);
-    }
+
+    const dispatch = useDispatch();
+
+    const tecnologiesInStore = useSelector((state: RootState) => state.tecnology.tecnologies);
 
     useEffect(() => {
-        loadTecnologies();
+        dispatch(getTecnologies());
+        setTecnologies(tecnologiesInStore);
         document.title = "Tecnologías"
-    }, []);
+    }, [tecnologiesInStore.length, dispatch, setTecnologies]);
 
     return (
         <Ui.Fade in>
@@ -54,7 +48,7 @@ const TecnologyList = () => {
                 </Ui.Box>
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
-                        <Ui.Grid container spacing={3} justify="center">
+                        <Ui.Grid container spacing={3}>
                             {tecnologies.map((tecnology) => {
                                 return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                             })}

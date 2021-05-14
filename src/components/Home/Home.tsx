@@ -6,8 +6,15 @@ import {getTecnologies} from '../../store/actions/tecnologiesAction';
 import { Tecnology } from '../../interfaces/Tecnology';
 import { RootState } from '../../store';
 import { getProjects } from '../../store/actions/projectsAction';
+import { Project } from '../../interfaces/Project';
+import ProjectItem from '../Project/ProjectItem';
+import {useTranslation} from 'react-i18next';
 
 const Home = () => {
+
+    const language: string | null = localStorage.getItem('language');
+
+    const [t, i18n] = useTranslation("global");
 
     const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
 
@@ -22,7 +29,7 @@ const Home = () => {
         if(projects.length <= 0){
             dispatch(getProjects());
         }
-        document.title = "Inicio"
+        document.title  = t("Titles.Home");
     }, [tecnologies.length, dispatch, projects.length]);
 
     return (
@@ -46,8 +53,10 @@ const Home = () => {
                                         </Ui.Grid>
                                         <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={2}>
                                             <Ui.Box>
+                                            <h1>{t("Titles.Home")}</h1>
                                                 <Ui.Typography component="h1" variant="h3" className="text-uppercase font-weight-bold">
                                                     Hola soy Cristhian,
+                                                    
                                                 </Ui.Typography>
                                                 <Ui.Typography component="h1" variant="h4" className="text-uppercase font-weight-bold">
                                                     Un Web Developer.
@@ -115,12 +124,12 @@ const Home = () => {
                 </Ui.Box>
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
-                        <Ui.Box pb="1em">
+                        <Ui.Box>
                             <Ui.Typography variant="h5" component="h5" gutterBottom className="fontBold">
-                                Proyectos
+                                PROYECTOS
                             </Ui.Typography> 
                         </Ui.Box>
-                        <Ui.Box style={{display: `block`, whiteSpace: `nowrap`, position: `relative`}}>
+                        <Ui.Box style={{display: `block`, whiteSpace: `nowrap`, position: `relative`}} mb="1em">
                             <Ui.List style={{overflow: `auto`}}>
                                 <Ui.Button color="primary">Todos</Ui.Button>
                                 <Ui.Button color="inherit" className="ml-1">Desarrollos Web</Ui.Button>
@@ -128,7 +137,11 @@ const Home = () => {
                             </Ui.List>
                         </Ui.Box>
                         <Ui.Box>
-                        Aqui iran los proyectos Xs
+                        <Ui.Grid>
+                            {projects.map((project: Project) => {
+                                return <ProjectItem project={project} key={project._id} />
+                            })}
+                        </Ui.Grid>
                         </Ui.Box>
                     </Ui.Box>
                 </Ui.Container>

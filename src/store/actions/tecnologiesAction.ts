@@ -1,6 +1,6 @@
 import {ThunkAction} from 'redux-thunk';
 
-import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS, SET_TECNOLOGY, SET_GET_TECNOLOGY_FAIL, SET_EDIT_TECNOLOGY_SUCCESS, SET_EDIT_TECNOLOGY_FAIL} from '../types';
+import {SET_TECNOLOGIES, SET_REGISTER_TECNOLOGY_FAIL, TecnologiesAction, SET_GET_TECNOLOGIES_FAIL, SET_LOADING_TECNOLOGIES, SET_REGISTER_TECNOLOGY_SUCCESS, SET_TECNOLOGY, SET_GET_TECNOLOGY_FAIL, SET_EDIT_TECNOLOGY_SUCCESS, SET_EDIT_TECNOLOGY_FAIL, SET_DELETE_TECNOLOGY_SUCCESS, SET_DELETE_TECNOLOGY_FAIL} from '../types';
 
 import {setError, setSuccess} from './authAction';
 
@@ -130,6 +130,29 @@ export const editTecnology = (id: string, data: Tecnology): ThunkAction<void, Ro
             });
         }
 
+    }
+}
+
+// Delete Tecnology
+export const deleteTecnology = (id: string | undefined): ThunkAction<void, RootState, null, TecnologiesAction> => {
+    return async dispatch => {
+        try {
+            dispatch(setLoading(true));
+            const res = await tecnologyService.deleteTecnology(id);
+            dispatch({
+                type: SET_DELETE_TECNOLOGY_SUCCESS,
+                payload: res.data
+            })
+            dispatch(setSuccess('Tecnology Deleted successfully'));
+            toast.success('Tecnología eliminada correctamente');
+            return dispatch(setLoading(false));
+        } catch (err) {
+            const errors = err.response.data.errors;
+            dispatch(setError(errors[0].msg));
+            dispatch({
+                type: SET_DELETE_TECNOLOGY_FAIL
+            });
+        }
     }
 }
 
