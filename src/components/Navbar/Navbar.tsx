@@ -39,8 +39,10 @@ const Navbar = () => {
     const handleChangeLanguage = () => {
         if(languageExist === 'es'){
             dispatch(toogleLanguage('en'));
+            i18n.changeLanguage("en")
         }else{
             dispatch(toogleLanguage('es'));
+            i18n.changeLanguage("es")
         }
     }
 
@@ -124,11 +126,15 @@ const Navbar = () => {
                                 </Ui.ListItem>
                             </Ui.Box>
                             <Ui.Box className="ml-auto nav-link link-shadow">
-                                <Ui.ListItem button onClick={handleChangeLanguage}>
-                                    <Ui.Box>
-                                            {language === 'es' ? <Ui.Typography variant="button" color="textPrimary" onClick={() => i18n.changeLanguage("en")}>En</Ui.Typography> : <Ui.Typography variant="button" color="textPrimary" onClick={() => i18n.changeLanguage("es")}>Es</Ui.Typography>}
-                                    </Ui.Box>
-                                </Ui.ListItem>
+                                {language === 'es' ? 
+                                    <Ui.ListItem button onClick={handleChangeLanguage}>
+                                                <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center"><Ui.Translate fontSize="default" /><span className="ml-1 linkText">EN</span></Ui.Typography>
+                                    </Ui.ListItem>
+                                    :
+                                    <Ui.ListItem button onClick={handleChangeLanguage}>
+                                                <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center"><Ui.Translate fontSize="default" /><span className="ml-1 linkText">ES</span></Ui.Typography>
+                                    </Ui.ListItem>
+                                }
                             </Ui.Box>
                         </Ui.List>
                     </Ui.Container>

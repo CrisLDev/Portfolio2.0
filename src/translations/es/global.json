@@ -1,20 +1,23 @@
 {
     "Titles":{
         "Home": "Inicio",
-        "LoginOrRegister": "Inicia Sesió o Registrate",
+        "LoginOrRegister": "Inicia Sesión o Registrate",
         "Dashboard": "Dashboard",
         "Projects": "Proyectos",
         "Create-Project": "Crear Proyecto",
         "Edit-Project": "Editar Proyecto",
+        "List-Project": "Listado de Proyectos",
         "Tecnologies": "Tecnologías",
         "Create-Tecnology": "Crear Tecnología",
         "Edit-Tecnology": "Editar Tecnología",
+        "List-Tecnology": "Listado de Tecnologías",
         "All": "Todos",
         "Web": "Desarrollos Web",
-        "Mobile": "Desarrollos mobiles"
+        "Mobile": "Desarrollos Mobiles"
     },
     "Text":{
         "Hello": "Hola soy cristhian",
-        "AWeb": "un desarrollador web"
+        "AWeb": "un desarrollador web",
+        "New": "Nuevo"
     }
 }

@@ -5,6 +5,7 @@ import {useHistory} from 'react-router';
 import { Project } from '../../interfaces/Project';
 import { useDispatch } from 'react-redux';
 import { deleteProject } from '../../store/actions/projectsAction';
+import Carousel from 'react-material-ui-carousel';
 
 interface Props{
     project: Project
@@ -57,10 +58,19 @@ const ProjectItem = ({project}: Props) => {
         setOpen(false);
     };
 
+    function Item(props: any)
+{
     return (
-        <Ui.Grid item xs={12} sm={4} md={3} lg={6} xl={6}>
+        <Ui.Box mb="5">
+            <img className="img-fluid" src={props.item} alt="img" />
+        </Ui.Box>
+    )
+}
+
+    return (
+        <Ui.Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
             <Ui.Card style={{height: `100%`}}>
-               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img className="img-fluid" src={project.es_name} alt={project.es_name} /></Ui.Avatar>} title={project.es_name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+               <Ui.CardHeader title={project.es_name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
                <Ui.Menu
                     id="simple-menu"
                     anchorEl={anchorEl}
@@ -72,9 +82,11 @@ const ProjectItem = ({project}: Props) => {
                     <Ui.MenuItem onClick={handleCloseDelete}>Eliminar</Ui.MenuItem>
                 </Ui.Menu>
                <Ui.CardContent>
-                   <Ui.Typography variant="body2" color="textSecondary" component="p" style={{overflow: `hidden`, textOverflow:`ellipsis`, display: `-webkit-box`, WebkitLineClamp: 3, WebkitBoxOrient: `vertical`}}>
-                        {project.es_description}
-                   </Ui.Typography>
+                    <Carousel index={0}>
+                        {
+                            project.imgUrls.map( (item, i) => <Item key={i} item={item} /> )
+                        }
+                    </Carousel>
                </Ui.CardContent>
                <Ui.CardActions disableSpacing>
                     <Ui.IconButton aria-label="mostrar más" onClick={handleClickOpen}>

@@ -73,7 +73,7 @@ const ProjectForm = () => {
         es_description: '',
         en_description: '',
         tecnologies: [],
-        imgUrls: ''
+        imgUrls: []
     });
 
 

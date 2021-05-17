@@ -5,7 +5,7 @@ export interface Project {
     es_description: string;
     en_description: string;
     tecnologies: any;
-    imgUrls: string;
+    imgUrls: Array<String>;
     createdAt?: string | Date;
     updatedAt?: string | Date;
 }

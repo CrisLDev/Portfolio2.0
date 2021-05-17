@@ -63,7 +63,7 @@ const TecnologyItem = ({tecnology}: Props) => {
     return (
         <Ui.Grid item xs={12} sm={4} md={3} lg={6} xl={6}>
             <Ui.Card style={{height: `100%`}}>
-               <Ui.CardHeader avatar={<Ui.Avatar className={classes.avatarModified}><img className="img-fluid" src={tecnology.urlImage} alt={tecnology.name} /></Ui.Avatar>} title={tecnology.name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+               <Ui.CardHeader avatar={<Ui.Avatar variant="rounded" className={classes.avatarModified}><img className="img-fluid" src={tecnology.urlImage} alt={tecnology.name} /></Ui.Avatar>} title={tecnology.name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
                <Ui.Menu
                     id="simple-menu"
                     anchorEl={anchorEl}

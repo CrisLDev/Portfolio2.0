@@ -6,15 +6,18 @@
         "Projects": "Projects",
         "Create-Project": "Create Project",
         "Edit-Project": "Edit Project",
+        "List-Project": "List of Project",
         "Tecnologies": "Tecnologies",
         "Create-Tecnology": "Create Tecnology",
         "Edit-Tecnology": "Edit Tecnology",
+        "List-Tecnology": "List of Tecnology",
         "All": "All",
         "Web": "Web developments",
         "Mobile": "Mobile developments"
     },
     "Text":{
         "Hello": "Hello I'm cristhian",
-        "AWeb": "A web developer"
+        "AWeb": "A web developer",
+        "New": "New"
     }
 }
