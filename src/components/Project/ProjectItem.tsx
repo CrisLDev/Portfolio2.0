@@ -6,6 +6,7 @@ import { Project } from '../../interfaces/Project';
 import { useDispatch } from 'react-redux';
 import { deleteProject } from '../../store/actions/projectsAction';
 import Carousel from 'react-material-ui-carousel';
+import { Tecnology } from '../../interfaces/Tecnology';
 
 interface Props{
     project: Project
@@ -16,6 +17,9 @@ Ui.createStyles({
     avatarModified: {
         display: `block!important`,
         backgroundColor: `transparent`,
+        width: theme.spacing(3),
+        height: theme.spacing(3),
+        marginRight: `5px`,
     }
   }),
 );
@@ -59,13 +63,36 @@ const ProjectItem = ({project}: Props) => {
     };
 
     function Item(props: any)
-{
-    return (
-        <Ui.Box mb="5">
-            <img className="img-fluid" src={props.item} alt="img" />
-        </Ui.Box>
-    )
-}
+    {
+        return (
+            <Ui.Box mb="5">
+                <img className="img-fluid" style={{maxHeight: `145.47px`}} src={props.item} alt="img" />
+            </Ui.Box>
+        )
+    }
+
+    function ItemDialog(props: any)
+    {
+        return (
+            <Ui.Box mb="5">
+                <img className="img-fluid" src={props.item} alt="img" />
+            </Ui.Box>
+        )
+    }
+
+    function Tecnology(props: any)
+    {
+        return (
+            <Ui.Box className="d-flex align-items-end">
+                <Ui.Avatar variant="rounded" className={classes.avatarModified}>
+                    <img className="img-fluid" src={props.item.urlImage} alt={props.item.name} />
+                </Ui.Avatar>
+                <Ui.Typography variant="body2" color="textSecondary">
+                        <span style={{marginRight: `15px`}}>{props.item.name}</span>
+                   </Ui.Typography>
+            </Ui.Box>
+        )
+    }
 
     return (
         <Ui.Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
@@ -103,6 +130,14 @@ const ProjectItem = ({project}: Props) => {
                 <Ui.DialogTitle id="alert-dialog-title">{project.es_name}</Ui.DialogTitle>
                 <Ui.DialogContent>
                 <Ui.DialogContentText id="alert-dialog-description" style={{whiteSpace: `pre-line`}}>
+                    <Ui.Box className="d-flex mb-4 flex-nowrap overflow-auto">
+                        {project.tecnologies.map((item:Tecnology) => <Tecnology key={item._id} item={item} />)}
+                    </Ui.Box>
+                    <Carousel index={0}>
+                            {
+                                project.imgUrls.map( (item, i) => <ItemDialog key={i} item={item} /> )
+                            }
+                    </Carousel>
                     {project.es_description}
                 </Ui.DialogContentText>
                 </Ui.DialogContent>

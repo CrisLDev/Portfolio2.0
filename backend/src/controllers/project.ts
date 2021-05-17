@@ -28,7 +28,7 @@ export const createProject: RequestHandler = async (req, res) => {
 //@access   Public
 export const getProjects: RequestHandler = async (req, res) => {
     try {
-        const projects = await Project.find();
+        const projects = await Project.find().populate('tecnologies');
         return res.status(200).json(projects);
     } catch (error) {
         return res.status(400).json({error: "Server error"});

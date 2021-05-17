@@ -51,7 +51,7 @@ const Dashboard = (props:any) => {
                             </Ui.Box>
                         </Ui.Grid>
                         <Ui.Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
-                            <Ui.Box style={{overflowX:`hidden`}} height="100%">
+                            <Ui.Box style={{overflowX: `hidden`, maxHeight: `464px`}}>
                                 <Ui.Grid container spacing={3}>
                                     <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                                         <Ui.Paper elevation={3}>

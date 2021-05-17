@@ -121,7 +121,11 @@ const ProjectForm = () => {
             const project = projects.find((project:Project) => project._id === params.id);
             if(project){
                 setProject(project);
-                setTecnologyName(project.tecnologies);
+                const tecnologiesIdsToPut: any = [];
+                const tecnologiesIds = project.tecnologies.map((tecnology: Tecnology) => {
+                    tecnologiesIdsToPut.push(tecnology._id)
+                });
+                setTecnologyName(tecnologiesIdsToPut);
             }else{
                 dispatch(getProject(params.id));
                 setProject(projectById);
