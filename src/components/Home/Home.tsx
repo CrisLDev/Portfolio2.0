@@ -6,13 +6,12 @@ import {getTecnologies} from '../../store/actions/tecnologiesAction';
 import { Tecnology } from '../../interfaces/Tecnology';
 import { RootState } from '../../store';
 import { getProjects } from '../../store/actions/projectsAction';
-import { Project } from '../../interfaces/Project';
+import ProjectSkeleton from '../Util/Skeletons/Projects';
 import ProjectItem from '../Project/ProjectItem';
 import {useTranslation} from 'react-i18next';
+import { Project } from '../../interfaces/Project';
 
 const Home = () => {
-
-    const language: string | null = localStorage.getItem('language');
 
     const [t, i18n] = useTranslation("global");
 
@@ -136,9 +135,19 @@ const Home = () => {
                         </Ui.Box>
                         <Ui.Box>
                         <Ui.Grid>
-                            {projects.map((project: Project) => {
-                                return <ProjectItem project={project} key={project._id} />
-                            })}
+                            {projects.length <= 0 ? 
+                                <Ui.Grid container spacing={3}>
+                                    <ProjectSkeleton/>
+                                    <ProjectSkeleton/>
+                                    <ProjectSkeleton/>
+                                </Ui.Grid>
+                            :
+                                <Ui.Grid container spacing={3}>
+                                    {projects.map((project: Project) => {
+                                        return <ProjectItem project={project} key={project._id} />
+                                    })}
+                                </Ui.Grid>
+                            }
                         </Ui.Grid>
                         </Ui.Box>
                     </Ui.Box>

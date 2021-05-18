@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProjectItem from './ProjectItem';
 import ProjectSkeleton from '../Util/Skeletons/Projects';
 import * as Ui from '../../shared/Shared';
@@ -67,7 +67,7 @@ const TecnologyList = () => {
                         <Link to="/projects/create">
                             <Ui.Fab color="primary" variant="extended" className={classes.fixedAddButton}>
                                 <Ui.Add />
-                                Nuevo
+                                {t("Text.New")}
                             </Ui.Fab>
                         </Link>
                     </Ui.Box>

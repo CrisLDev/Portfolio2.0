@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tecnology } from '../../interfaces/Tecnology';
 import TecnologyItem from './TecnologyItem';
+import TecnologySkeleton from '../Util/Skeletons/Tecnology';
 import * as Ui from '../../shared/Shared';
 import {Link} from 'react-router-dom';
 import { getTecnologies } from '../../store/actions/tecnologiesAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import {useTranslation} from 'react-i18next';
-import Carousel from 'react-material-ui-carousel';
 
 const useStyles = Ui.makeStyles({
     fixedAddButton: {
@@ -51,11 +51,18 @@ const TecnologyList = () => {
                 </Ui.Box>
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
-                        <Ui.Grid container spacing={3}>
-                            {tecnologies.map((tecnology) => {
-                                return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
-                            })}
-                        </Ui.Grid>
+                            {tecnologies.length <= 0 ? 
+                                <Ui.Grid container spacing={3}>
+                                    <TecnologySkeleton/>
+                                    <TecnologySkeleton/>
+                                    <TecnologySkeleton/>
+                                </Ui.Grid> :
+                                <Ui.Grid container spacing={3}>
+                                    {tecnologies.map((tecnology) => {
+                                        return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
+                                    })}
+                                </Ui.Grid>
+                            }
                         <Link to="/tecnologies/create">
                             <Ui.Fab color="primary" variant="extended" className={classes.fixedAddButton}>
                                 <Ui.Add />

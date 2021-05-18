@@ -5,6 +5,7 @@ import * as Ui from '../../shared/Shared';
 import { getTecnology, registerTecnology, editTecnology } from '../../store/actions/tecnologiesAction';
 import { useHistory, useParams } from 'react-router-dom';
 import { RootState } from '../../store';
+import {useTranslation} from 'react-i18next';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -13,6 +14,8 @@ interface Params {
 }
 
 const TecnologyForm = () => {
+
+    const [t, i18n] = useTranslation("global");
 
     const params = useParams<Params>();
 
@@ -59,9 +62,9 @@ const TecnologyForm = () => {
                 dispatch(getTecnology(params.id));
                 setTecnology(tecnologyById);
             }
-            document.title = "Editar tecnología"
+            document.title = t("Titles.Edit-Tecnology")
         }else{
-            document.title = "Crear tecnología"
+            document.title = t("Titles.Create-Tecnology")
         }
     }, [dispatch, params.id, tecnologies, tecnologyById])
 
@@ -86,8 +89,8 @@ const TecnologyForm = () => {
                                 <Ui.Typography variant="h4" component="h4" gutterBottom>
                                 {
                                     params.id ?
-                                    'Editar una tecnología' :
-                                    'Agregar una nueva tecnología'
+                                    t("Titles.Edit-Tecnology"):
+                                    t("Titles.Create-Tecnology")
                                 }
                                 </Ui.Typography>
                             </Ui.Grid>
@@ -101,10 +104,10 @@ const TecnologyForm = () => {
                             <form noValidate autoComplete="off" style={{width: `100%`}} onSubmit={handleSubmit}>
                                 <Ui.TextField 
                                 name="name" 
-                                label="Nombre" 
+                                label={t("Labels.Name")} 
                                 variant="filled" 
                                 autoFocus 
-                                placeholder="Ingresa un nombre" 
+                                placeholder={t("Placeholders.Name")}
                                 fullWidth 
                                 margin="normal"
                                 value={name}
@@ -112,9 +115,9 @@ const TecnologyForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="es_resume" 
-                                label="Es Resumen" 
+                                label={t("Labels.Resume-Es")} 
                                 variant="filled"
-                                placeholder="Ingresa un pequeño resumen" 
+                                placeholder={t("Placeholders.Resume-Es")}
                                 multiline 
                                 rowsMax={4}
                                 fullWidth 
@@ -124,9 +127,9 @@ const TecnologyForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="es_description" 
-                                label="Es Descripción" 
+                                label={t("Labels.Description-Es")} 
                                 variant="filled" 
-                                placeholder="Ingresa una descripción" 
+                                placeholder={t("Placeholders.Description-Es")}
                                 multiline 
                                 rowsMax={4} 
                                 fullWidth 
@@ -135,9 +138,9 @@ const TecnologyForm = () => {
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="en_resume" 
-                                label="En Resumen" 
+                                label={t("Labels.Resume-En")} 
                                 variant="filled"
-                                placeholder="Ingresa un pequeño resumen" 
+                                placeholder={t("Placeholders.Resume-En")} 
                                 multiline 
                                 rowsMax={4}
                                 fullWidth 
@@ -147,9 +150,9 @@ const TecnologyForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="en_description" 
-                                label="En Descripción" 
+                                label={t("Labels.Description-En")} 
                                 variant="filled" 
-                                placeholder="Ingresa una descripción" 
+                                placeholder={t("Placeholders.Description-En")}
                                 multiline 
                                 rowsMax={4} 
                                 fullWidth 
@@ -158,18 +161,18 @@ const TecnologyForm = () => {
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="url" 
-                                label="Url" 
+                                label={t("Labels.Url")} 
                                 variant="filled" 
-                                placeholder="Ingresa la Url principal" 
+                                placeholder={t("Placeholders.Url")}
                                 fullWidth 
                                 margin="normal"
                                 value={url}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="urlImage" 
-                                label="Url de la Imagen" 
+                                label={t("Labels.Img-Url")} 
                                 variant="filled" 
-                                placeholder="Ingresa la url de la imagen" 
+                                placeholder={t("Placeholders.Img-Url")}
                                 fullWidth 
                                 margin="normal"
                                 value={urlImage}
@@ -178,8 +181,8 @@ const TecnologyForm = () => {
                                     <Ui.Button type="submit" variant="contained" color="primary" fullWidth>
                                         {
                                             params.id ?
-                                                'Editar' :
-                                                'Crear'
+                                                t("Text.Edit") :
+                                                t("Text.Create")
                                         }
                                         </Ui.Button>
                                     </Ui.Box>

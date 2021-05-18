@@ -56,7 +56,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
                                         <Ui.Home fontSize="default" />
-                                        <span className="ml-1 linkText">inicio</span>
+                                        <span className="ml-1 linkText">{t("Titles.Home")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>
@@ -66,7 +66,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
                                         <Ui.AccountTree fontSize="default" />
-                                        <span className="ml-1 linkText">proyectos</span>
+                                        <span className="ml-1 linkText">{t("Titles.Projects")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>
@@ -76,7 +76,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
                                         <Ui.Extension fontSize="default" />
-                                        <span className="ml-1 linkText">tecnologias</span>
+                                        <span className="ml-1 linkText">{t("Titles.Tecnologies")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>
@@ -87,7 +87,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
                                         <Ui.AccountCircle fontSize="default" />
-                                        <span className="ml-1 linkText">usuario</span>
+                                        <span className="ml-1 linkText">{t("Titles.User")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>
@@ -99,7 +99,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
                                         <Ui.Dashboard fontSize="default" />
-                                        <span className="ml-1 linkText">dashboard</span>
+                                        <span className="ml-1 linkText">{t("Titles.Dashboard")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>
@@ -109,7 +109,7 @@ const Navbar = () => {
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
                                             <Ui.ExitToApp fontSize="default" />
-                                            <span className="ml-1 linkText">salir</span>
+                                            <span className="ml-1 linkText">{t("Text.Close")}</span>
                                         </Ui.Typography>
                                     </Ui.Box>
                                 </Ui.ListItem>

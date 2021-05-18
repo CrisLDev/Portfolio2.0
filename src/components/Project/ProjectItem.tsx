@@ -3,10 +3,12 @@ import * as Ui from '../../shared/Shared';
 import {Theme} from '@material-ui/core/';
 import {useHistory} from 'react-router';
 import { Project } from '../../interfaces/Project';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteProject } from '../../store/actions/projectsAction';
 import Carousel from 'react-material-ui-carousel';
 import { Tecnology } from '../../interfaces/Tecnology';
+import { RootState } from '../../store';
+import {useTranslation} from 'react-i18next';
 
 interface Props{
     project: Project
@@ -20,11 +22,18 @@ Ui.createStyles({
         width: theme.spacing(3),
         height: theme.spacing(3),
         marginRight: `5px`,
-    }
+    },
+    media: {
+        height: 140,
+      },
   }),
 );
 
 const ProjectItem = ({project}: Props) => {
+
+    const [t, i18n] = useTranslation("global");
+
+    const { language } = useSelector((state: RootState) => state.language);
 
     const dispatch = useDispatch();
 
@@ -65,9 +74,11 @@ const ProjectItem = ({project}: Props) => {
     function Item(props: any)
     {
         return (
-            <Ui.Box mb="5">
-                <img className="img-fluid" style={{maxHeight: `145.47px`}} src={props.item} alt="img" />
-            </Ui.Box>
+            <Ui.CardMedia
+            className={classes.media}
+            image={props.item}
+            title={project.es_name}
+            />
         )
     }
 
@@ -97,28 +108,35 @@ const ProjectItem = ({project}: Props) => {
     return (
         <Ui.Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
             <Ui.Card style={{height: `100%`}}>
-               <Ui.CardHeader title={project.es_name} action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
-               <Ui.Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={Boolean(anchorEl)}
-                    onClose={handleCloseMenu}
-                >
-                    <Ui.MenuItem onClick={handleCloseEdit}>Editar</Ui.MenuItem>
-                    <Ui.MenuItem onClick={handleCloseDelete}>Eliminar</Ui.MenuItem>
-                </Ui.Menu>
-               <Ui.CardContent>
-                    <Carousel index={0}>
-                        {
-                            project.imgUrls.map( (item, i) => <Item key={i} item={item} /> )
-                        }
-                    </Carousel>
-               </Ui.CardContent>
+               <Ui.CardActionArea>
+                <Ui.CardHeader title={language === 'es' ? project.es_name : project.en_name } action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+                <Ui.Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleCloseMenu}
+                    >
+                        <Ui.MenuItem onClick={handleCloseEdit}>{t("Text.Edit")}</Ui.MenuItem>
+                        <Ui.MenuItem onClick={handleCloseDelete}>{t("Text.Delete")}</Ui.MenuItem>
+                    </Ui.Menu>
+                <Ui.CardContent>
+                        <Carousel index={0} indicators={false}>
+                            {
+                                project.imgUrls.map( (item, i) => <Item key={i} item={item} /> )
+                            }
+                        </Carousel>
+                </Ui.CardContent>
+               </Ui.CardActionArea>
                <Ui.CardActions disableSpacing>
-                    <Ui.IconButton aria-label="mostrar más" onClick={handleClickOpen}>
+                    <Ui.IconButton aria-label="mostrar más" onClick={handleClickOpen} className="me-auto">
                         <Ui.Add />
                     </Ui.IconButton>
+                    <a href="https://subcentro.vercel.app" target="_blank" rel="noreferrer">
+                    <Ui.IconButton aria-label="ir a" className="ms-auto">
+                        <Ui.Link />
+                    </Ui.IconButton>
+                    </a>
                </Ui.CardActions>
             </Ui.Card>
             <Ui.Dialog
@@ -127,7 +145,7 @@ const ProjectItem = ({project}: Props) => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <Ui.DialogTitle id="alert-dialog-title">{project.es_name}</Ui.DialogTitle>
+                <Ui.DialogTitle id="alert-dialog-title">{language === 'es' ? project.es_name : project.en_name }</Ui.DialogTitle>
                 <Ui.DialogContent>
                 <Ui.DialogContentText id="alert-dialog-description" style={{whiteSpace: `pre-line`}}>
                     <Ui.Box className="d-flex mb-4 flex-nowrap overflow-auto">
@@ -138,12 +156,12 @@ const ProjectItem = ({project}: Props) => {
                                 project.imgUrls.map( (item, i) => <ItemDialog key={i} item={item} /> )
                             }
                     </Carousel>
-                    {project.es_description}
+                    {language === 'es' ? project.es_description : project.en_description }
                 </Ui.DialogContentText>
                 </Ui.DialogContent>
                 <Ui.DialogActions>
                 <Ui.Button onClick={handleClose} color="default" autoFocus>
-                    Cerrar
+                    {t("Text.Close")}
                 </Ui.Button>
                 </Ui.DialogActions>
             </Ui.Dialog>

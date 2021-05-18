@@ -5,10 +5,13 @@ import { SignInData, SignUpData } from '../../interfaces/Auth';
 import { Link } from 'react-router-dom';
 import { login, setError } from '../../store/actions/authAction';
 import { RootState } from '../../store';
+import {useTranslation} from 'react-i18next';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const Login = () => {
+
+    const [t, i18n] = useTranslation("global");
 
     const [user, setUser] = useState<SignInData>({
         email: "",
@@ -58,22 +61,22 @@ const Login = () => {
                                 <form noValidate autoComplete="off" style={{width: `100%`}} onSubmit={handleLoginSubmit}>
                                     <Ui.TextField 
                                     name="email" 
-                                    label="Email de Usuario" 
+                                    label={t("Labels.UserEmail")} 
                                     variant="filled" 
                                     autoFocus
-                                    placeholder="Ingresa tu email" 
+                                    placeholder={t("Placeholders.UserEmail")}
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange}>
                                     </Ui.TextField>
                                     <Ui.FormControl variant="filled" fullWidth>
-                                    <Ui.InputLabel htmlFor="filled-adornment-password">Contraseña</Ui.InputLabel>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password">{t("Labels.Password")}</Ui.InputLabel>
                                     <Ui.FilledInput
                                         id="filled-adornment-password"
                                         type={user.showPassword ? 'text' : 'password'}
                                         value={user.password}
                                         onChange={handleChange('password')}
-                                        placeholder="Ingresa tu contraseña"
+                                        placeholder={t("Placeholders.Password")}
                                         endAdornment={
                                         <Ui.InputAdornment position="end">
                                             <Ui.IconButton
@@ -91,12 +94,12 @@ const Login = () => {
                                     <Ui.Box mt="0.5em">
                                         <Link to="/reset" className="linkItem">
                                             <Ui.Box mt="1em" mb="1em" color="#0093E9">
-                                                Holvidaste tu contraseña?
+                                                {t("Text.Forgot")}
                                             </Ui.Box>
                                         </Link>
                                         <Ui.Box className="container-btn-two">
                                             <Ui.Button type="submit" variant="contained" size="large" className="transparent" fullWidth disabled={loading}>
-                                                {loading ? "Cargando..." : "Iniciar Seción"}
+                                            {loading ? t("Text.Loading") : t("Text.LogIn")}
                                                 <Ui.Box className="fill-two"></Ui.Box>
                                             </Ui.Button>
                                         </Ui.Box>

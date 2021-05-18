@@ -2,11 +2,14 @@ import React, { Fragment, useEffect } from 'react';
 import * as Ui from '../../shared/Shared';
 import Login from './Login';
 import Register from './Register';
+import {useTranslation} from 'react-i18next';
 
 const UserActions = () => {
 
+    const [t, i18n] = useTranslation("global");
+
     useEffect(() => {
-        document.title = "Inicia Sesión o Regístrate"
+        document.title = t("Titles.LoginOrRegister")
     }, [])
 
     return (
@@ -18,7 +21,7 @@ const UserActions = () => {
                             <Ui.Grid container spacing={3} justify="center">
                                 <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12} className="text-center">
                                     <Ui.Typography variant="h4" component="h4" gutterBottom>
-                                        Inicia seción o registrate.
+                                        {t("Titles.LoginOrRegister")}
                                     </Ui.Typography>
                                 </Ui.Grid>
                             </Ui.Grid>

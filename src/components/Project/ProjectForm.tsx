@@ -9,6 +9,7 @@ import {Theme, useTheme} from '@material-ui/core/styles';
 import { getTecnologies } from '../../store/actions/tecnologiesAction';
 import { Tecnology } from '../../interfaces/Tecnology';
 import {toast} from 'react-toastify';
+import {useTranslation} from 'react-i18next';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -59,6 +60,7 @@ const useStyles = Ui.makeStyles((theme: Theme) =>
     }
 
 const ProjectForm = () => {
+
     const classes = useStyles();
 
     const theme = useTheme();
@@ -130,9 +132,9 @@ const ProjectForm = () => {
                 dispatch(getProject(params.id));
                 setProject(projectById);
             }
-            document.title = "Editar proyecto"
+            document.title = t("Titles.Edit-Project")
         }else{
-            document.title = "Crear proyecto"
+            document.title = t("Titles.Create-Project")
         }
     }, [dispatch, params.id, projects, projectById, tecnologies.length, history]);
 
@@ -160,6 +162,8 @@ const ProjectForm = () => {
         return tecnology[0].name;
     }
 
+    const [t, i18n] = useTranslation("global");
+
     return (
         <Fragment>
             <Ui.Fade in>
@@ -171,8 +175,9 @@ const ProjectForm = () => {
                                 <Ui.Typography variant="h4" component="h4" gutterBottom>
                                 {
                                     params.id ?
-                                    'Editar un proyecto' :
-                                    'Agregar un nuevo proyecto'
+                                    t("Titles.Edit-Project"):
+                                    t("Titles.Create-Project")
+                                    
                                 }
                                 </Ui.Typography>
                             </Ui.Grid>
@@ -186,10 +191,10 @@ const ProjectForm = () => {
                             <form noValidate autoComplete="off" style={{width: `100%`}} onSubmit={handleSubmit}>
                                 <Ui.TextField 
                                 name="es_name" 
-                                label="Nombre en español" 
+                                label={t("Labels.Name-Es")}
                                 variant="filled" 
                                 autoFocus 
-                                placeholder="Ingresa un nombre" 
+                                placeholder={t("Placeholders.Name-Es")}
                                 fullWidth 
                                 margin="normal"
                                 value={es_name}
@@ -197,9 +202,9 @@ const ProjectForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="en_name" 
-                                label="Nombre en ingles" 
+                                label={t("Labels.Name-En")}
                                 variant="filled" 
-                                placeholder="Ingresa un nombre" 
+                                placeholder={t("Placeholders.Name-En")}
                                 fullWidth 
                                 margin="normal"
                                 value={en_name}
@@ -207,9 +212,9 @@ const ProjectForm = () => {
                                 </Ui.TextField>
                                 <Ui.TextField 
                                 name="es_description" 
-                                label="Descripción en español" 
+                                label={t("Labels.Description-Es")}
                                 variant="filled" 
-                                placeholder="Ingresa una descripción" 
+                                placeholder={t("Placeholders.Description-Es")}
                                 multiline 
                                 rowsMax={4} 
                                 fullWidth 
@@ -218,9 +223,9 @@ const ProjectForm = () => {
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.TextField 
                                 name="en_description" 
-                                label="Descripción en ingles" 
+                                label={t("Labels.Description-En")}
                                 variant="filled" 
-                                placeholder="Ingresa una descripción" 
+                                placeholder={t("Placeholders.Description-En")}
                                 multiline 
                                 rowsMax={4} 
                                 fullWidth 
@@ -228,7 +233,7 @@ const ProjectForm = () => {
                                 value={en_description}
                                 onChange={handleInputChange}></Ui.TextField>
                                 <Ui.FormControl variant="filled" fullWidth className="noFocus mt-3 mb-2">
-                                    <Ui.InputLabel id="tecnologiesLabel">Tecnologias</Ui.InputLabel>
+                                    <Ui.InputLabel id="tecnologiesLabel">{t("Titles.Tecnologies")}</Ui.InputLabel>
                                     <Ui.Select 
                                     name="tecnologies" 
                                     labelId="tecnologiesLabel" 
@@ -257,9 +262,9 @@ const ProjectForm = () => {
                                 </Ui.FormControl>
                                 <Ui.TextField 
                                 name="imgUrls" 
-                                label="Urls de las Imagenes" 
+                                label={t("Labels.Img-Urls")}
                                 variant="filled" 
-                                placeholder="Ingresa la url de la imagen" 
+                                placeholder={t("Placeholders.Img-Urls")}
                                 fullWidth 
                                 margin="normal"
                                 value={imgUrls}
@@ -268,8 +273,8 @@ const ProjectForm = () => {
                                     <Ui.Button type="submit" variant="contained" color="primary" fullWidth>
                                         {
                                             params.id ?
-                                                'Editar' :
-                                                'Crear'
+                                                t("Text.Edit") :
+                                                t("Text.Create")
                                         }
                                         </Ui.Button>
                                     </Ui.Box>
