@@ -35,6 +35,8 @@ const ProjectItem = ({project}: Props) => {
 
     const { language } = useSelector((state: RootState) => state.language);
 
+    const user = useSelector((state: RootState) => state.auth.user);
+
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -110,7 +112,7 @@ const ProjectItem = ({project}: Props) => {
             <Ui.Card style={{height: `100%`}}>
                <Ui.CardActionArea>
                 <Ui.CardHeader title={language === 'es' ? project.es_name : project.en_name } action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
-                <Ui.Menu
+                    <Ui.Menu
                         id="simple-menu"
                         anchorEl={anchorEl}
                         keepMounted
