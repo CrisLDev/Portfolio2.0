@@ -11,6 +11,7 @@ interface Props {
 
 const UserCard = ({user}: Props) => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     return (

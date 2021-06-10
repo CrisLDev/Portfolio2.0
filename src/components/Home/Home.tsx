@@ -13,6 +13,7 @@ import { Project } from '../../interfaces/Project';
 
 const Home = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
@@ -29,6 +30,7 @@ const Home = () => {
             dispatch(getProjects());
         }
         document.title  = t("Titles.Home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tecnologies.length, dispatch, projects.length]);
 
     return (

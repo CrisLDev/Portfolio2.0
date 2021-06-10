@@ -6,10 +6,12 @@ import {useTranslation} from 'react-i18next';
 
 const UserActions = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     useEffect(() => {
         document.title = t("Titles.LoginOrRegister")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

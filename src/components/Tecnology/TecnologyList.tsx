@@ -25,6 +25,7 @@ const TecnologyList = () => {
 
     const dispatch = useDispatch();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const tecnologiesInStore = useSelector((state: RootState) => state.tecnology.tecnologies);
@@ -33,6 +34,7 @@ const TecnologyList = () => {
         dispatch(getTecnologies());
         setTecnologies(tecnologiesInStore);
         document.title = "Tecnologías"
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tecnologiesInStore.length, dispatch, setTecnologies]);
 
     return (

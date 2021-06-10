@@ -25,6 +25,7 @@ const TecnologyList = () => {
 
     const dispatch = useDispatch();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const projectsInStore = useSelector((state: RootState) => state.project.projects);
@@ -33,6 +34,7 @@ const TecnologyList = () => {
         dispatch(getProjects());
         setProjects(projectsInStore);
         document.title = "Tecnologías"
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [projectsInStore.length, dispatch, setProjects]);
 
     return (

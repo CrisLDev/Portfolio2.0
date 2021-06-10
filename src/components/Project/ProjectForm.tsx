@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, {ChangeEvent, FormEvent, Fragment, useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Project } from '../../interfaces/Project';
@@ -124,6 +125,9 @@ const ProjectForm = () => {
             if(project){
                 setProject(project);
                 const tecnologiesIdsToPut: any = [];
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                // eslint-disable-next-line array-callback-return
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const tecnologiesIds = project.tecnologies.map((tecnology: Tecnology) => {
                     tecnologiesIdsToPut.push(tecnology._id)
                 });
@@ -136,6 +140,7 @@ const ProjectForm = () => {
         }else{
             document.title = t("Titles.Create-Project")
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, params.id, projects, projectById, tecnologies.length, history]);
 
     const {
@@ -162,6 +167,7 @@ const ProjectForm = () => {
         return tecnology[0].name;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     return (

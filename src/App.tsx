@@ -52,6 +52,7 @@ const App = () => {
         local();
         dispatch(setLoading(true));
         dispatch(loadUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     if(loading){
