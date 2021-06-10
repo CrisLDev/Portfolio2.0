@@ -15,6 +15,7 @@ interface Params {
 
 const TecnologyForm = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const params = useParams<Params>();
@@ -66,6 +67,7 @@ const TecnologyForm = () => {
         }else{
             document.title = t("Titles.Create-Tecnology")
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, params.id, tecnologies, tecnologyById])
 
     const {

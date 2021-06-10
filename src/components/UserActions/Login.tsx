@@ -11,6 +11,7 @@ type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const Login = () => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const [user, setUser] = useState<SignInData>({

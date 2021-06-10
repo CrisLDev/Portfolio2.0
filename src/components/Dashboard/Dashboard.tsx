@@ -13,6 +13,7 @@ import {useTranslation} from 'react-i18next';
 
 const Dashboard = (props:any) => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const tecnologies = useSelector((state: RootState) => state.tecnology.tecnologies);
@@ -36,6 +37,7 @@ const Dashboard = (props:any) => {
 */
     useEffect(() => {
         document.title = t("Titles.Dashboard")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

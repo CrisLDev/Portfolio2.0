@@ -31,10 +31,12 @@ Ui.createStyles({
 
 const ProjectItem = ({project}: Props) => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [t, i18n] = useTranslation("global");
 
     const { language } = useSelector((state: RootState) => state.language);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const user = useSelector((state: RootState) => state.auth.user);
 
     const dispatch = useDispatch();
