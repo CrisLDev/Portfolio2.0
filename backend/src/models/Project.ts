@@ -3,28 +3,46 @@ import {Schema, model, Document} from 'mongoose';
 const ObjectId = Schema.Types.ObjectId;
 
 const projectSchema = new Schema({
-    name: {
+    es_name: {
         type: String,
         required:true,
         trim: true
     },
-    descripition: {
+    en_name: {
         type: String,
         required:true,
         trim: true
     },
-    tecnologies: [{
-        tecnology: {
+    es_description: {
+        type: String,
+        required:true,
+        trim: true
+    },
+    en_description: {
+        type: String,
+        required:true,
+        trim: true
+    },
+    tecnologies: [
+        {
             type: ObjectId,
             ref: 'Tecnology'
         }
-    }]
-}, {timestamps: true});
+    ],
+    imgUrls: {
+        type: Array,
+        required: true
+    }
+
+}, {timestamps: true, versionKey: false});
 
 export interface IProject extends Document{
-    name: string,
-    description: string,
-    tecnologies: []
+    es_name: string;
+    en_name: string;
+    es_description: string;
+    en_description: string;
+    tecnologies: [];
+    imgUrls: [];
 }
 
 export default model<IProject>('Project', projectSchema);

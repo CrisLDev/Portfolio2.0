@@ -5,10 +5,13 @@ import { SignUpData } from '../../interfaces/Auth';
 import {toast} from 'react-toastify';
 import { register, setError} from '../../store/actions/authAction';
 import {RootState} from '../../store';
+import {useTranslation} from 'react-i18next';
 
 type InputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
 const Register = () => {
+
+    const [t, i18n] = useTranslation("global");
 
     const [user, setUser] = useState<SignUpData>({
         email: "",
@@ -78,39 +81,40 @@ const Register = () => {
                                 <form noValidate autoComplete="off" style={{width: `100%`}} onSubmit={handleRegisterSubmit}>
                                     <Ui.TextField 
                                     name="fullname" 
-                                    label="Nombre Completo" 
-                                    variant="outlined"
-                                    placeholder="Ingresa un nombre completo" 
+                                    label={t("Labels.FullName")}
+                                    variant="filled"
+                                    placeholder={t("Placeholders.FullName")}
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange} >
                                     </Ui.TextField>
                                     <Ui.TextField 
                                     name="username" 
-                                    label="Nombre de Usuario" 
-                                    variant="outlined" 
-                                    placeholder="Ingresa tu nombre de usuario" 
+                                    label={t("Labels.UserName")}
+                                    variant="filled" 
+                                    placeholder={t("Placeholders.UserName")}
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange}>
                                     </Ui.TextField>
                                     <Ui.TextField 
                                     name="email" 
-                                    label="Email de Usuario" 
-                                    variant="outlined" 
-                                    placeholder="Ingresa tu email" 
+                                    label={t("Labels.UserEmail")} 
+                                    variant="filled" 
+                                    placeholder={t("Placeholders.UserEmail")}
                                     fullWidth 
                                     margin="normal"
                                     onChange={handleInputChange}>
                                     </Ui.TextField>
                                     <Ui.Box mb="1.5em" mt="1em">
-                                    <Ui.FormControl variant="outlined" fullWidth>
-                                    <Ui.InputLabel htmlFor="outlined-adornment-password">Contraseña</Ui.InputLabel>
-                                    <Ui.OutlinedInput
-                                        id="outlined-adornment-password"
+                                    <Ui.FormControl variant="filled" fullWidth>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password">{t("Labels.Password")} </Ui.InputLabel>
+                                    <Ui.FilledInput
+                                        id="filled-adornment-password"
                                         type={user.showPassword ? 'text' : 'password'}
                                         value={user.password}
                                         name="password"
+                                        placeholder={t("Placeholders.Password")}
                                         onChange={handleChange('password')}
                                         endAdornment={
                                         <Ui.InputAdornment position="end">
@@ -124,18 +128,18 @@ const Register = () => {
                                             </Ui.IconButton>
                                         </Ui.InputAdornment>
                                         }
-                                        labelWidth={80}
                                     />
                                     </Ui.FormControl>
                                     </Ui.Box>
                                     <Ui.Box mb="1em">
-                                    <Ui.FormControl variant="outlined" fullWidth>
-                                    <Ui.InputLabel htmlFor="outlined-adornment-password2">Confirma tu Contraseña</Ui.InputLabel>
-                                    <Ui.OutlinedInput
-                                        id="outlined-adornment-password2"
+                                    <Ui.FormControl variant="filled" fullWidth>
+                                    <Ui.InputLabel htmlFor="filled-adornment-password2">{t("Labels.RepeatPassword")}</Ui.InputLabel>
+                                    <Ui.FilledInput
+                                        id="filled-adornment-password2"
                                         type={user.showPassword2 ? 'text' : 'password'}
                                         value={user.password2}
                                         name="password2"
+                                        placeholder={t("Placeholders.RepeatPassword")}
                                         onChange={handleChange2('password2')}
                                         endAdornment={
                                         <Ui.InputAdornment position="end">
@@ -149,13 +153,12 @@ const Register = () => {
                                             </Ui.IconButton>
                                         </Ui.InputAdornment>
                                         }
-                                        labelWidth={170}
                                     />
                                     </Ui.FormControl>
                                     </Ui.Box>
                                     <Ui.Box className="container-btn-two">
                                             <Ui.Button type="submit" variant="contained" size="large" className="transparent" fullWidth disabled={loading}>
-                                                {loading ? "Cargando..." : "Registrarse"}
+                                                {loading ? t("Text.Loading") : t("Text.SingUp")}
                                                 <Ui.Box className="fill-two"></Ui.Box>
                                             </Ui.Button>
                                         </Ui.Box>

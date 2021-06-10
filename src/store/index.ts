@@ -6,9 +6,18 @@ import authReducer from './reducers/authReducer';
 
 import themeReducer from './reducers/themeReducer';
 
+import languageReducer from './reducers/languageReducer';
+
+import tecnologyReducer from './reducers/tecnologyReducer';
+
+import projectReducer from './reducers/projectReducer';
+
 const rootReducer = combineReducers({
     auth: authReducer,
-    theme: themeReducer
+    theme: themeReducer,
+    language: languageReducer,
+    tecnology: tecnologyReducer,
+    project: projectReducer
 });
 
 const store = createStore(

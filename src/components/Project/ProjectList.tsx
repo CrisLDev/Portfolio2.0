@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Tecnology } from '../../interfaces/Tecnology';
-import TecnologyItem from './TecnologyItem';
-import TecnologySkeleton from '../Util/Skeletons/Tecnology';
+import ProjectItem from './ProjectItem';
+import ProjectSkeleton from '../Util/Skeletons/Projects';
 import * as Ui from '../../shared/Shared';
 import {Link} from 'react-router-dom';
-import { getTecnologies } from '../../store/actions/tecnologiesAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
+import { getProjects } from '../../store/actions/projectsAction';
+import { Project } from '../../interfaces/Project';
 import {useTranslation} from 'react-i18next';
 
 const useStyles = Ui.makeStyles({
@@ -21,19 +21,19 @@ const TecnologyList = () => {
 
     const classes = useStyles();
 
-    const [tecnologies, setTecnologies] = useState<Tecnology[]>([]);
+    const [projects, setProjects] = useState<Project[]>([]);
 
     const dispatch = useDispatch();
 
     const [t, i18n] = useTranslation("global");
 
-    const tecnologiesInStore = useSelector((state: RootState) => state.tecnology.tecnologies);
-
+    const projectsInStore = useSelector((state: RootState) => state.project.projects);
+    
     useEffect(() => {
-        dispatch(getTecnologies());
-        setTecnologies(tecnologiesInStore);
+        dispatch(getProjects());
+        setProjects(projectsInStore);
         document.title = "Tecnologías"
-    }, [tecnologiesInStore.length, dispatch, setTecnologies]);
+    }, [projectsInStore.length, dispatch, setProjects]);
 
     return (
         <Ui.Fade in>
@@ -43,7 +43,7 @@ const TecnologyList = () => {
                         <Ui.Grid container spacing={3} justify="center">
                             <Ui.Grid item xs={12} sm={12} md={12} lg={12} xl={12} className="text-center">
                                 <Ui.Typography variant="h4" component="h4" gutterBottom className="text-uppercase">
-                                    {t("Titles.List-Tecnology")}
+                                    {t("Titles.List-Project")}.
                                 </Ui.Typography>
                             </Ui.Grid>
                         </Ui.Grid>
@@ -51,19 +51,20 @@ const TecnologyList = () => {
                 </Ui.Box>
                 <Ui.Container>
                     <Ui.Box pt="3em" pb="3em">
-                            {tecnologies.length <= 0 ? 
-                                <Ui.Grid container spacing={3}>
-                                    <TecnologySkeleton/>
-                                    <TecnologySkeleton/>
-                                    <TecnologySkeleton/>
-                                </Ui.Grid> :
-                                <Ui.Grid container spacing={3}>
-                                    {tecnologies.map((tecnology) => {
-                                        return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
-                                    })}
-                                </Ui.Grid>
-                            }
-                        <Link to="/tecnologies/create">
+                        {projects.length <= 0 ? 
+                            <Ui.Grid container spacing={3}>
+                                <ProjectSkeleton/>
+                                <ProjectSkeleton/>
+                                <ProjectSkeleton/>
+                            </Ui.Grid>
+                        :
+                            <Ui.Grid container spacing={3}>
+                                {projects.map((project) => {
+                                    return <ProjectItem project={project} key={project._id} />
+                                })}
+                            </Ui.Grid>
+                        }
+                        <Link to="/projects/create">
                             <Ui.Fab color="primary" variant="extended" className={classes.fixedAddButton}>
                                 <Ui.Add />
                                 {t("Text.New")}

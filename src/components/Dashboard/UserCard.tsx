@@ -1,15 +1,17 @@
-import React from 'react';
 import Gravatar from 'react-gravatar';
 import { User } from '../../interfaces/User';
 import * as Ui from "../../shared/Shared";
 import Moment from 'react-moment';
 import 'moment-timezone';
+import {useTranslation} from 'react-i18next';
 
 interface Props {
     user: User
 }
 
 const UserCard = ({user}: Props) => {
+
+    const [t, i18n] = useTranslation("global");
 
     return (
         <Ui.Card>
@@ -27,7 +29,7 @@ const UserCard = ({user}: Props) => {
                 <Ui.Box mb="1em">
                     <Ui.Typography component="p" className="d-flex align-items-center mb-2">
                         <Ui.Person/>
-                        <span className="ml-2">Nombre de usuario:</span>
+                        <span className="ml-2">{t("Labels.UserName")}:</span>
                     </Ui.Typography>
                     <Ui.Box ml="5px">
                         <Ui.Typography component="span" color="textSecondary" className="d-flex align-items-center">
@@ -39,7 +41,7 @@ const UserCard = ({user}: Props) => {
                 <Ui.Box mb="1em">
                     <Ui.Typography component="p" className="d-flex align-items-center mb-2">
                         <Ui.Email/>
-                        <span className="ml-2">Email:</span>
+                        <span className="ml-2">{t("Labels.UserEmail")}:</span>
                     </Ui.Typography>
                     <Ui.Box ml="5px" className="text-truncate">
                         <Ui.Typography component="span" color="textSecondary" className="text-nowrap">
@@ -51,7 +53,7 @@ const UserCard = ({user}: Props) => {
                 <Ui.Box>
                     <Ui.Typography component="p" className="d-flex align-items-center mb-2">
                         <Ui.Schedule/>
-                        <span className="ml-2">Fecha de Registro:</span>
+                        <span className="ml-2">{t("Labels.RegisterDate")}:</span>
                     </Ui.Typography>
                     <Ui.Box ml="5px">
                         <Ui.Typography component="span" color="textSecondary">
