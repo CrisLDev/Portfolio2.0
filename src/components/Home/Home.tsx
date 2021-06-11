@@ -90,7 +90,7 @@ const Home = () => {
                                 <Ui.Grid container spacing={3} justify="center">
                                     <Ui.Grid item xs={9} sm={6} md={12} lg={12} xl={2} className="floating">
                                         <Ui.Box p="1.2em">
-                                            <img loading="lazy" src="./assets/avatar.svg" alt="Foto De Perfil" className="rounded-circle img-fluid border" />
+                                            <img loading="lazy" src="https://i.imgur.com/6zNGxX9.jpg" alt="Foto De Perfil" className="img-fluid border" />
                                         </Ui.Box>
                                         <Ui.Box pb="1em" borderBottom="0.5em solid white" padding="5px">
                                         <Ui.List className="d-flex justify-content-center">
