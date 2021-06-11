@@ -2,7 +2,7 @@ import axios from 'axios';
 import { SignInData, SignUpData } from '../interfaces/Auth';
 import { User } from '../interfaces/User';
 
-const API = 'http://localhost:4000/api/';
+const API = process.env.API || 'http://localhost:4000/api/';
 
 export const getUsers = async () => {
     return await axios.get<User[]>(`${API}user`);
