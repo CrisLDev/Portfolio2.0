@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { Project } from '../interfaces/Project';
 
-const API = process.env.API || 'http://localhost:4000/api';
+//const API = process.env.API || 'http://localhost:4000/api';
+
+const API = process.env.API || 'https://subcentroback.herokuapp.com/api';
 
 export const getProjects = async () => {
     return await axios.get<Project[]>(`${API}/project`);
