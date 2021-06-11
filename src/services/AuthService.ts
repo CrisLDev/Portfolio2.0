@@ -4,7 +4,7 @@ import { User } from '../interfaces/User';
 
 //const API = process.env.API || 'http://localhost:4000/api';
 
-const API = process.env.API || 'https://subcentroback.herokuapp.com/api';
+const API = process.env.API || 'https://portafolioback2.herokuapp.com/api';
 
 export const getUsers = async () => {
     return await axios.get<User[]>(`${API}/user`);
