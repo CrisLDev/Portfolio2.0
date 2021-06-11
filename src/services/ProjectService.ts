@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Project } from '../interfaces/Project';
 
-const API = 'http://localhost:4000/api/project';
+const API = process.env.API || 'http://localhost:4000/api/project';
 
 export const getProjects = async () => {
     return await axios.get<Project[]>(`${API}`);
