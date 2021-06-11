@@ -36,6 +36,8 @@ const ProjectItem = ({project}: Props) => {
 
     const { language } = useSelector((state: RootState) => state.language);
 
+    const { authenticated } = useSelector((state: RootState) => state.auth);
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const user = useSelector((state: RootState) => state.auth.user);
 
@@ -113,8 +115,13 @@ const ProjectItem = ({project}: Props) => {
         <Ui.Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
             <Ui.Card style={{height: `100%`}}>
                <Ui.CardActionArea>
-                <Ui.CardHeader title={language === 'es' ? project.es_name : project.en_name } action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
-                    <Ui.Menu
+                {
+                    authenticated ? <Ui.CardHeader title={language === 'es' ? project.es_name : project.en_name } action={<Ui.IconButton aria-label="settings" aria-haspopup="true" onClick={handleClickMenu}><Ui.MoreVert/></Ui.IconButton>} />
+                    : <Ui.CardHeader title={language === 'es' ? project.es_name : project.en_name } />
+                }
+                    {
+                        authenticated && 
+                        <Ui.Menu
                         id="simple-menu"
                         anchorEl={anchorEl}
                         keepMounted
@@ -124,6 +131,7 @@ const ProjectItem = ({project}: Props) => {
                         <Ui.MenuItem onClick={handleCloseEdit}>{t("Text.Edit")}</Ui.MenuItem>
                         <Ui.MenuItem onClick={handleCloseDelete}>{t("Text.Delete")}</Ui.MenuItem>
                     </Ui.Menu>
+                    }
                 <Ui.CardContent>
                         <Carousel index={0} indicators={false}>
                             {
@@ -136,11 +144,6 @@ const ProjectItem = ({project}: Props) => {
                     <Ui.IconButton aria-label="mostrar más" onClick={handleClickOpen} className="me-auto">
                         <Ui.Add />
                     </Ui.IconButton>
-                    <a href="https://subcentro.vercel.app" target="_blank" rel="noreferrer">
-                    <Ui.IconButton aria-label="ir a" className="ms-auto">
-                        <Ui.Link />
-                    </Ui.IconButton>
-                    </a>
                </Ui.CardActions>
             </Ui.Card>
             <Ui.Dialog

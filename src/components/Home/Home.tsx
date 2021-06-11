@@ -95,24 +95,32 @@ const Home = () => {
                                         <Ui.Box pb="1em" borderBottom="0.5em solid white" padding="5px">
                                         <Ui.List className="d-flex justify-content-center">
                                             <Ui.ListItem button>
+                                                <a className="text-white" href="https://www.linkedin.com/in/cristhian-leonardo-moreira-pazmi%C3%B1o-365a3165/" target="_blank" rel="noreferrer">
                                                 <Ui.Box ml="0.1rem">
                                                         <Ui.AssignmentInd fontSize="large" />
                                                 </Ui.Box>
+                                                </a>
                                             </Ui.ListItem>
                                             <Ui.ListItem button>
+                                            <a className="text-white" href="https://github.com/CrisLDev" target="_blank" rel="noreferrer">
                                                 <Ui.Box ml="0.1rem">
                                                     <Ui.GitHub fontSize="large" />
                                                 </Ui.Box>
+                                                </a>
                                             </Ui.ListItem>
                                             <Ui.ListItem button>
+                                            <a className="text-white" href="https://www.instagram.com/cristianmoreirapazmino/?hl=es-la" target="_blank" rel="noreferrer">
                                                 <Ui.Box ml="0.1rem">
                                                     <Ui.Instagram fontSize="large" />
                                                 </Ui.Box>
+                                                </a>
                                             </Ui.ListItem>
                                             <Ui.ListItem button>
+                                            <a className="text-white" href="https://www.facebook.com/cristian.moreirapazmino.58/" target="_blank" rel="noreferrer">
                                                 <Ui.Box ml="0.1rem">
                                                     <Ui.Facebook fontSize="large" />
                                                 </Ui.Box>
+                                                </a>
                                             </Ui.ListItem>
                                         </Ui.List>
                                         </Ui.Box>
