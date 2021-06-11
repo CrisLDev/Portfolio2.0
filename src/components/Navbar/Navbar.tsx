@@ -51,6 +51,7 @@ const Navbar = () => {
                 <Ui.Toolbar>
                     <Ui.Container className="d-flex justify-content-center">
                         <Ui.List component="nav" aria-labelledby="main navigation" className="d-flex flex-nowrap overflow-hidden" id="navScroll">
+                            {!authenticated ? 
                             <Link to="/" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
@@ -61,7 +62,9 @@ const Navbar = () => {
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Link>
-                            <Link to="/projects" key="projects" className="nav-link text-uppercase link-shadow">
+                            :
+                            <div>
+                                <Link to="/projects" key="projects" className="nav-link text-uppercase link-shadow">
                             <Ui.ListItem button>
                                     <Ui.Box ml="0.1rem">
                                         <Ui.Typography color="textSecondary" className="d-flex justify-content-center">
@@ -81,18 +84,6 @@ const Navbar = () => {
                                     </Ui.Box>
                                 </Ui.ListItem>
                             </Link>
-                            {!authenticated ? 
-                            <Link to="/actions" key="actions" className="nav-link text-uppercase link-shadow">
-                                <Ui.ListItem button>
-                                    <Ui.Box ml="0.1rem">
-                                        <Ui.Typography color="textSecondary" className="d-flex justify-content-center align-items-center">
-                                        <Ui.AccountCircle fontSize="default" />
-                                        <span className="ml-1 linkText">{t("Titles.User")}</span>
-                                        </Ui.Typography>
-                                    </Ui.Box>
-                                </Ui.ListItem>
-                            </Link>
-                            :
                             <Ui.Box className="d-flex">
                                 <Link to="/dashboard" key="actions" className="nav-link text-uppercase link-shadow">
                                 <Ui.ListItem button>
@@ -115,6 +106,7 @@ const Navbar = () => {
                                 </Ui.ListItem>
                             </Ui.Box>
                             </Ui.Box>
+                            </div>
                             }
                             <Ui.Box className="ml-auto nav-link link-shadow">
                                 <Ui.ListItem button onClick={handleChangeTheme}>
