@@ -10,6 +10,7 @@ import ProjectSkeleton from '../Util/Skeletons/Projects';
 import ProjectItem from '../Project/ProjectItem';
 import {useTranslation} from 'react-i18next';
 import { Project } from '../../interfaces/Project';
+import TecnologySkeleton from '../Util/Skeletons/Tecnology';
 
 const Home = () => {
 
@@ -163,10 +164,20 @@ const Home = () => {
                                 </Ui.Typography> 
                             </Ui.Box>
                         </Ui.Box>
-                        <Ui.Grid container spacing={3} justify="center">
-                        {tecnologies.map((tecnology: Tecnology) => {
+                        <Ui.Grid>
+                            {tecnologies.length <= 0 ? 
+                            <Ui.Grid container spacing={3}>
+                            <TecnologySkeleton/>
+                            <TecnologySkeleton/>
+                            <TecnologySkeleton/>
+                        </Ui.Grid>
+                            :
+                            <Ui.Grid container spacing={3}>
+                                    {tecnologies.map((tecnology: Tecnology) => {
                                 return <TecnologyItem tecnology={tecnology} key={tecnology._id} />
                             })}
+                        </Ui.Grid>
+                        }
                         </Ui.Grid>
                     </Ui.Container>
                 </Ui.Box>
