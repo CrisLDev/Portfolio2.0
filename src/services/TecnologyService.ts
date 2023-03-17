@@ -3,7 +3,7 @@ import { Tecnology } from '../interfaces/Tecnology';
 
 //const API = process.env.API || 'http://localhost:4000/api';
 
-const API = process.env.API || 'https://portafolioback2.herokuapp.com/api';
+const API = process.env.API || 'https://portafolioback-production.up.railway.app/api';
 
 export const getTecnologies = async () => {
     return await axios.get<Tecnology[]>(`${API}/tecnology`);
